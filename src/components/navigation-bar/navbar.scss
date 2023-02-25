@@ -1,0 +1,43 @@
+$neo-blue: #004fac;
+
+.navbar {
+  padding: 0.8rem;
+  font-family: "Barlow";
+  font-size: 1.4rem;
+  border-bottom: 2px solid $neo-blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 60px;
+  }
+  &-link-active {
+    color: $neo-blue;
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: solid 5px $neo-blue;
+    padding: 5px;
+    &:hover {
+      color: lighten($color: $neo-blue, $amount: 30%);
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      border-radius: 8px;
+      border-bottom: none;
+    }
+  }
+  &-link-unactive {
+    color: white;
+    text-decoration: none;
+    &:hover {
+      padding: 8px;
+      border-radius: 8px;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+  }
+  &_links {
+    color: white;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+  }
+}
