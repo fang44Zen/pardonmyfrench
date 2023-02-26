@@ -5,8 +5,11 @@ $neo-blue: #ffb84c;
   font-family: "Barlow";
   font-size: 1.4rem;
   border-bottom: 2px solid $neo-blue;
-  display: flex;
-  justify-content: center;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 8fr 1fr;
   align-items: center;
   img {
     width: 60px;
