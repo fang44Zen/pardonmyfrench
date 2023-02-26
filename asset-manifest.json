@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/pardonmyfrench/static/css/main.71f64fda.css",
+    "main.js": "/pardonmyfrench/static/js/main.528c6035.js",
+    "index.html": "/pardonmyfrench/index.html",
+    "main.71f64fda.css.map": "/pardonmyfrench/static/css/main.71f64fda.css.map",
+    "main.528c6035.js.map": "/pardonmyfrench/static/js/main.528c6035.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.71f64fda.css",
+    "static/js/main.528c6035.js"
+  ]
+}
