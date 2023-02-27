@@ -6,11 +6,9 @@ import {
   signInWithPopup,
   signInWithRedirect,
   GoogleAuthProvider,
-  FacebookAuthProvider,
 } from "firebase/auth";
 
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
-import Exercices from "../../routes/exercices/exercices";
 
 const firebaseConfig = {
   apiKey: "AIzaSyADFAyKkPx_QaI4OeGRQGOmer6JXzd1Vus",
@@ -28,8 +26,9 @@ const firebaseApp = initializeApp(firebaseConfig);
 const googleProvider = new GoogleAuthProvider();
 
 export const auth = getAuth();
-export const signInWithGooglePopup = () =>
+export const signInWithGooglePopup = () => {
   signInWithPopup(auth, googleProvider);
+};
 
 export const dataBase = getFirestore();
 export const createUserDocumentFromAuth = async (userAuth) => {
@@ -39,7 +38,7 @@ export const createUserDocumentFromAuth = async (userAuth) => {
 
   if (!userSnapshot.exists()) {
     const { displayName, email } = userAuth;
-    const questions = [{ title: "", question: "", hint: "", answer: "" }];
+    const questions = [];
     try {
       await setDoc(userDocRef, {
         displayName,

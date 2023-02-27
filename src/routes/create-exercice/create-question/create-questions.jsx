@@ -1,14 +1,18 @@
 import "./create-questions.scss";
-import { doc, updateDoc } from "firebase/firestore";
-import { dataBase } from "../../../utils/firebase/firebase.utils";
+import { doc, updateDoc, arrayUnion } from "firebase/firestore";
+import { dataBase, auth } from "../../../utils/firebase/firebase.utils";
 
 const CreateQuestion = () => {
   const addQuestion = async () => {
-    const question = doc(dataBase, "users", doc.id);
-    // await updateDoc(question, {
-    //   question: "oui",
-    // });
-    // console.log(question.users);
+    const questionsRef = doc(dataBase, "users", auth.currentUser.uid);
+    await updateDoc(questionsRef, {
+      questions: arrayUnion({
+        question: "aller",
+        answer: "peut-être",
+        hint: "yes!",
+      }),
+    });
+    console.log(auth.currentUser.uid);
   };
 
   return (
