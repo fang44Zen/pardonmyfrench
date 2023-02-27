@@ -1,6 +1,6 @@
 import "./create-questions.scss";
 import { doc, updateDoc, arrayUnion } from "firebase/firestore";
-import { dataBase, auth } from "../../../utils/firebase/firebase.utils";
+import { dataBase, auth } from "../../utils/firebase/firebase.utils";
 
 const CreateQuestion = () => {
   const addQuestion = async () => {

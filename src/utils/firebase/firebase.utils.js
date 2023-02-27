@@ -1,12 +1,7 @@
 // import { getAnalytics } from "firebase/analytics";
 import { createStaticHandler } from "@remix-run/router";
 import { initializeApp } from "firebase/app";
-import {
-  getAuth,
-  signInWithPopup,
-  signInWithRedirect,
-  GoogleAuthProvider,
-} from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 
