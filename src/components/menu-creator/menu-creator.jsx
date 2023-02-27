@@ -12,7 +12,9 @@ const MenuCreator = () => {
               className="exotocreate_list-exo-link"
             >
               <h3>Create questions</h3>
-              <span class="material-symbols-outlined">arrow_forward_ios</span>
+              <span className="material-symbols-outlined">
+                arrow_forward_ios
+              </span>
             </Link>
           </li>
           <p>
@@ -21,7 +23,9 @@ const MenuCreator = () => {
           <li>
             <Link className="exotocreate_list-exo-link">
               <h3>Create conjugation</h3>
-              <span class="material-symbols-outlined">arrow_forward_ios</span>
+              <span className="material-symbols-outlined">
+                arrow_forward_ios
+              </span>
             </Link>
           </li>
           <p>
@@ -32,7 +36,9 @@ const MenuCreator = () => {
           <li>
             <Link className="exotocreate_list-exo-link">
               <h3>Practice pronunciation</h3>
-              <span class="material-symbols-outlined">arrow_forward_ios</span>
+              <span className="material-symbols-outlined">
+                arrow_forward_ios
+              </span>
             </Link>
           </li>
           <p>

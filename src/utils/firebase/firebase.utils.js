@@ -1,4 +1,5 @@
 // import { getAnalytics } from "firebase/analytics";
+import { createStaticHandler } from "@remix-run/router";
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
@@ -9,6 +10,7 @@ import {
 } from "firebase/auth";
 
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+import Exercices from "../../routes/exercices/exercices";
 
 const firebaseConfig = {
   apiKey: "AIzaSyADFAyKkPx_QaI4OeGRQGOmer6JXzd1Vus",
@@ -28,7 +30,26 @@ const googleProvider = new GoogleAuthProvider();
 export const auth = getAuth();
 export const signInWithGooglePopup = () =>
   signInWithPopup(auth, googleProvider);
+
 export const dataBase = getFirestore();
 export const createUserDocumentFromAuth = async (userAuth) => {
   const userDocRef = doc(dataBase, "users", userAuth.uid);
+
+  const userSnapshot = await getDoc(userDocRef);
+
+  if (!userSnapshot.exists()) {
+    const { displayName, email } = userAuth;
+    const questions = [{ title: "", question: "", hint: "", answer: "" }];
+    try {
+      await setDoc(userDocRef, {
+        displayName,
+        email,
+        questions,
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  return userDocRef;
 };

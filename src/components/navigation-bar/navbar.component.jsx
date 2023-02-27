@@ -2,7 +2,6 @@ import "./navbar.scss";
 import mainlogo from "../../img/pencil-case.png";
 import { NavLink, Outlet } from "react-router-dom";
 import { Fragment } from "react";
-import SignIn from "../../routes/sign-in/sign-in";
 const Navbar = () => {
   return (
     <Fragment>
@@ -10,7 +9,7 @@ const Navbar = () => {
         <img src={mainlogo} alt="main-logo" />
         <ul className="navbar_links">
           <NavLink
-            to="/"
+            to=""
             className={({ isActive }) =>
               isActive ? "navbar-link-active" : "navbar-link-unactive"
             }
@@ -34,7 +33,9 @@ const Navbar = () => {
             <li>Exercices</li>
           </NavLink>
         </ul>
-        <button>My account</button>
+        <NavLink to="login-page">
+          <button>My account</button>
+        </NavLink>
       </div>
 
       <Outlet />
