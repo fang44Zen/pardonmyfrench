@@ -33,8 +33,14 @@ const Navbar = () => {
             <li>Exercices</li>
           </NavLink>
         </ul>
-        <NavLink to="login-page">
-          <button>My account</button>
+
+        <NavLink
+          to="login-page"
+          className={({ isActive }) =>
+            isActive ? "navbar-link-active" : "navbar-link-unactive"
+          }
+        >
+          <p>My account</p>
         </NavLink>
       </div>
 

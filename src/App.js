@@ -6,6 +6,8 @@ import Exercices from "./routes/exercices/exercices";
 import CreateExo from "./routes/create-exercice/create-exercice";
 import CreateQuestion from "./components/create-question/create-questions";
 import AuthPage from "./routes/authentification-pages/auth-page";
+import SignIn from "./components/authentification/sign-in/sign-in";
+import SignUp from "./components/authentification/sign-up/sign-up";
 
 function App() {
   return (
@@ -19,7 +21,10 @@ function App() {
             path="/create-exo/questions-creator"
             element={<CreateQuestion />}
           />
-          <Route path="/login-page" element={<AuthPage />} />
+          <Route exact path="/login-page" element={<AuthPage />}>
+            <Route index element={<SignIn />} />
+            <Route path="/login-page/signup" element={<SignUp />} />
+          </Route>
         </Route>
       </Routes>
     </div>

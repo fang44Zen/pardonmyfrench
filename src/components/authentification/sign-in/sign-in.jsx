@@ -14,9 +14,9 @@ const SignIn = () => {
 
   return (
     <div>
-      <h2>Connect to your account</h2>
       <div className="sign-in-main">
         <div className="sign-in-main_form">
+          <h2>Connect to your account</h2>
           <h3>Email</h3>
           <input type="email" placeholder="email" />
           <h3>Password</h3>

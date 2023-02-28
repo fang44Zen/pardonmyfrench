@@ -1,4 +1,5 @@
 import "./auth-menu.scss";
+import { NavLink, Outlet } from "react-router-dom";
 import SignIn from "./sign-in/sign-in";
 import SignUp from "./sign-up/sign-up";
 
@@ -6,11 +7,27 @@ const AuthMenu = () => {
   return (
     <div>
       <div className="auth-bar">
-        <h3>Sign In</h3>
-        <h3>Sign Up</h3>
+        <div className="auth-bar_link">
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "auth-bar_link-active" : "auth-bar_link-unactive"
+            }
+            to=""
+            end
+          >
+            <h3>Sign In</h3>
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "auth-bar_link-active" : "auth-bar_link-unactive"
+            }
+            to="/login-page/signup"
+          >
+            <h3>Sign Up</h3>
+          </NavLink>
+        </div>
       </div>
-      <SignIn />
-      <SignUp />
+      <Outlet />
     </div>
   );
 };

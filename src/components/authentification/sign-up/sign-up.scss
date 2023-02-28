@@ -1,0 +1,64 @@
+$main-color: #ffb84c;
+$bg-color: #404258;
+
+.sign-up-main {
+  display: flex;
+  justify-content: center;
+  &_form {
+    border: solid 4px $main-color;
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    h3,
+    h2 {
+      color: white;
+    }
+    input {
+      background-color: darken(white, 12%);
+      text-decoration: none;
+      border: solid 2px $main-color;
+      border-radius: 22px;
+      padding: 8px;
+      font-family: "Roboto";
+      font-size: 22px;
+      &:focus {
+        outline: none !important;
+        color: black;
+      }
+    }
+    &_connect-button {
+      background-color: $bg-color;
+      text-decoration: none;
+      border: solid 2px $main-color;
+      border-radius: 22px;
+      padding: 8px;
+      font-family: "Roboto";
+      font-size: 16px;
+      width: fit-content;
+      color: white;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      &:hover {
+        background-color: darken($bg-color, 10%);
+        color: darken(white, 15%);
+      }
+    }
+    &_google-button {
+      background-color: white;
+      text-decoration: none;
+      border: solid 2px $main-color;
+      border-radius: 22px;
+      padding: 8px;
+      font-family: "Roboto";
+      font-size: 16px;
+      width: fit-content;
+      color: black;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      &:hover {
+        background-color: darken(white, 10%);
+      }
+    }
+  }
+}

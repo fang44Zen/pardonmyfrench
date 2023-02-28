@@ -1,0 +1,30 @@
+$main-color: #ffb84c;
+
+.auth-bar {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  &_link {
+    display: flex;
+    gap: 2rem;
+    &-active {
+      border-top-right-radius: 8px;
+      border-top-left-radius: 8px;
+      text-decoration: none;
+      padding: 4px;
+      color: white;
+      font-size: 22px;
+      border-width: 4px 4px 0 4px;
+      border-color: $main-color;
+      border-style: solid;
+    }
+    &-unactive {
+      border-top-right-radius: 8px;
+      border-top-left-radius: 8px;
+      text-decoration: none;
+      padding: 4px;
+      color: white;
+      font-size: 22px;
+    }
+  }
+}
