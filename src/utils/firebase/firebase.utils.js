@@ -1,7 +1,11 @@
 // import { getAnalytics } from "firebase/analytics";
-import { createStaticHandler } from "@remix-run/router";
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
 
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 
@@ -19,26 +23,34 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
 const googleProvider = new GoogleAuthProvider();
+googleProvider.setCustomParameters({
+  prompt: "select_account",
+});
 
 export const auth = getAuth();
-export const signInWithGooglePopup = () => {
+export const signInWithGooglePopup = () =>
   signInWithPopup(auth, googleProvider);
-};
-
 export const dataBase = getFirestore();
-export const createUserDocumentFromAuth = async (userAuth) => {
+
+export const createUserDocumentFromAuth = async (
+  userAuth,
+  questions = [],
+  otherInfos = {}
+) => {
+  // if (!userAuth) return;
   const userDocRef = doc(dataBase, "users", userAuth.uid);
 
   const userSnapshot = await getDoc(userDocRef);
 
   if (!userSnapshot.exists()) {
     const { displayName, email } = userAuth;
-    const questions = [];
+
     try {
       await setDoc(userDocRef, {
         displayName,
         email,
         questions,
+        ...otherInfos,
       });
     } catch (error) {
       console.log(error.message);
@@ -46,4 +58,9 @@ export const createUserDocumentFromAuth = async (userAuth) => {
   }
 
   return userDocRef;
+};
+
+export const createUserMailnPass = async (email, password) => {
+  if (!email || !password) return;
+  createUserWithEmailAndPassword(auth, email, password);
 };

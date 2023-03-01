@@ -9,7 +9,7 @@ const Navbar = () => {
         <img src={mainlogo} alt="main-logo" />
         <ul className="navbar_links">
           <NavLink
-            to=""
+            to="/"
             className={({ isActive }) =>
               isActive ? "navbar-link-active" : "navbar-link-unactive"
             }
