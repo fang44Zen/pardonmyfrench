@@ -1,7 +1,10 @@
 import "./sign-up.scss";
 import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
-import { createUserMailnPass } from "../../../utils/firebase/firebase.utils";
+import {
+  createUserMailnPass,
+  createUserDocumentFromAuth,
+} from "../../../utils/firebase/firebase.utils";
 
 const inputDefaultValues = {
   displayName: "",
@@ -12,6 +15,7 @@ const inputDefaultValues = {
 
 const SignUp = () => {
   const [inputValues, setInputValues] = useState(inputDefaultValues);
+  const { displayName, email, password, confirmPassword } = inputValues;
 
   const inputHandler = (event) => {
     const name = event.target.name;
@@ -20,32 +24,35 @@ const SignUp = () => {
   };
 
   const handleSubmit = async (event) => {
-    event.preventDefaul();
-    if (inputValues.password !== inputValues.confirmPassword) {
+    event.preventDefault();
+    if (password !== confirmPassword) {
       alert("passwords do not match!");
       return;
     }
     try {
-      const response = await createUserMailnPass(
-        inputValues.email,
-        inputValues.password
-      );
+      const { user } = await createUserMailnPass(email, password);
+      await createUserDocumentFromAuth(user, { displayName });
     } catch (error) {
-      console.log(error);
+      if (error.code === "auth/email-already-in-use") {
+        alert("Email already used");
+      } else {
+        console.log(error);
+      }
     }
+    setInputValues(inputDefaultValues);
   };
 
   return (
     <div>
       <div className="sign-up-main">
-        <form onSubmit={handleSubmit} className="sign-up-main_form">
+        <div className="sign-up-main_form">
           <h2>Create your account</h2>
           <h3>Name</h3>
           <input
             type="text"
             placeholder="Name"
             name="displayName"
-            value={inputValues.displayName}
+            value={displayName}
             onChange={inputHandler}
           />
           <h3>Email</h3>
@@ -53,7 +60,7 @@ const SignUp = () => {
             type="email"
             placeholder="email"
             name="email"
-            value={inputValues.email}
+            value={email}
             onChange={inputHandler}
           />
           <h3>Password</h3>
@@ -61,7 +68,7 @@ const SignUp = () => {
             type="password"
             placeholder="password"
             name="password"
-            value={inputValues.password}
+            value={password}
             onChange={inputHandler}
           />
           <h3>Confirm password</h3>
@@ -69,17 +76,20 @@ const SignUp = () => {
             type="password"
             placeholder="password"
             name="confirmPassword"
-            value={inputValues.confirmPassword}
+            value={confirmPassword}
             onChange={inputHandler}
           />
-          <button type="submit" className="sign-up-main_form_connect-button">
+          <button
+            onClick={handleSubmit}
+            className="sign-up-main_form_connect-button"
+          >
             Create
           </button>
-          {/* <button className="sign-up-main_form_google-button">
+          <button className="sign-up-main_form_google-button">
             connect with google
             <FcGoogle />
-          </button> */}
-        </form>
+          </button>
+        </div>
       </div>
     </div>
   );
