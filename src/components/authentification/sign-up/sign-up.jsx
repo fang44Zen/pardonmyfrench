@@ -20,8 +20,7 @@ const SignUp = () => {
   const { setCurrentUser } = useContext(UserContext);
 
   const inputHandler = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
+    const { name, value } = event.target;
     setInputValues({ ...inputValues, [name]: value });
   };
 
@@ -34,7 +33,7 @@ const SignUp = () => {
     try {
       const { user } = await createUserMailnPass(email, password);
       await createUserDocumentFromAuth(user, { displayName });
-      setCurrentUser(user, { displayName });
+      setCurrentUser(user);
       setInputValues(inputDefaultValues);
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {

@@ -4,6 +4,7 @@ import {
   signInWithGooglePopup,
   createUserDocumentFromAuth,
   signInUserMailnPass,
+  auth,
 } from "../../../utils/firebase/firebase.utils";
 import { useState, useContext } from "react";
 import { UserContext } from "../../../context/UserContext";
@@ -22,6 +23,7 @@ const SignIn = () => {
     const { user } = await signInWithGooglePopup();
     await createUserDocumentFromAuth(user);
     setCurrentUser(user);
+    console.log(auth);
   };
 
   const inputHandler = (event) => {
