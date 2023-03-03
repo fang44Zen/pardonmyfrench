@@ -5,7 +5,8 @@ import {
   createUserDocumentFromAuth,
   signInUserMailnPass,
 } from "../../../utils/firebase/firebase.utils";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../../../context/UserContext";
 
 const defaultInputValues = {
   email: "",
@@ -15,23 +16,24 @@ const defaultInputValues = {
 const SignIn = () => {
   const [inputValues, setInputValues] = useState(defaultInputValues);
   const { email, password } = inputValues;
+  const { setCurrentUser } = useContext(UserContext);
 
   const googleUserLog = async () => {
     const { user } = await signInWithGooglePopup();
-    const userDocRef = await createUserDocumentFromAuth(user);
-    console.log(userDocRef);
+    await createUserDocumentFromAuth(user);
+    setCurrentUser(user);
   };
 
   const inputHandler = (event) => {
     const { name, value } = event.target;
     setInputValues({ ...inputValues, [name]: value });
-    console.log(inputValues);
   };
 
   const handlerConnect = async (event) => {
     event.preventDefault();
     try {
-      const response = await signInUserMailnPass(email, password);
+      const { user } = await signInUserMailnPass(email, password);
+      setCurrentUser(user);
       setInputValues(defaultInputValues);
     } catch (error) {
       switch (error.code) {

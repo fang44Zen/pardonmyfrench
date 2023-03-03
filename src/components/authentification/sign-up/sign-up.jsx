@@ -1,10 +1,11 @@
 import "./sign-up.scss";
 import { FcGoogle } from "react-icons/fc";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import {
   createUserMailnPass,
   createUserDocumentFromAuth,
 } from "../../../utils/firebase/firebase.utils";
+import { UserContext } from "../../../context/UserContext";
 
 const inputDefaultValues = {
   displayName: "",
@@ -16,6 +17,7 @@ const inputDefaultValues = {
 const SignUp = () => {
   const [inputValues, setInputValues] = useState(inputDefaultValues);
   const { displayName, email, password, confirmPassword } = inputValues;
+  const { setCurrentUser } = useContext(UserContext);
 
   const inputHandler = (event) => {
     const name = event.target.name;
@@ -32,6 +34,8 @@ const SignUp = () => {
     try {
       const { user } = await createUserMailnPass(email, password);
       await createUserDocumentFromAuth(user, { displayName });
+      setCurrentUser(user, { displayName });
+      setInputValues(inputDefaultValues);
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
         alert("Email already used");
@@ -39,7 +43,6 @@ const SignUp = () => {
         console.log(error);
       }
     }
-    setInputValues(inputDefaultValues);
   };
 
   return (
