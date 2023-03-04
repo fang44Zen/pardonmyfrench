@@ -38,3 +38,15 @@ $neo-blue: #ffb84c;
     gap: 3rem;
   }
 }
+.logout-button {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: white;
+  background-color: #404258;
+  border: 4px solid $neo-blue;
+  border-radius: 8px;
+  &:hover {
+    border: 4px solid darken($neo-blue, 18%);
+    background-color: darken(#404258, 10%);
+  }
+}

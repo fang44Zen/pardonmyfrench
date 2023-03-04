@@ -1,8 +1,13 @@
 import "./navbar.scss";
 import mainlogo from "../../img/pencil-case.png";
 import { NavLink, Outlet } from "react-router-dom";
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
+import { UserContext } from "../../context/UserContext";
+import { signOutUser } from "../../utils/firebase/firebase.utils";
+
 const Navbar = () => {
+  const { currentUser } = useContext(UserContext);
+
   return (
     <Fragment>
       <div className="navbar">
@@ -33,15 +38,22 @@ const Navbar = () => {
             <li>Exercices</li>
           </NavLink>
         </ul>
-
-        <NavLink
-          to="login-page"
-          className={({ isActive }) =>
-            isActive ? "navbar-link-active" : "navbar-link-unactive"
-          }
-        >
-          <p>My account</p>
-        </NavLink>
+        {currentUser ? (
+          <div>
+            <button onClick={signOutUser} className="logout-button">
+              Logout
+            </button>
+          </div>
+        ) : (
+          <NavLink
+            to="login-page"
+            className={({ isActive }) =>
+              isActive ? "navbar-link-active" : "navbar-link-unactive"
+            }
+          >
+            <p>My account</p>
+          </NavLink>
+        )}
       </div>
 
       <Outlet />

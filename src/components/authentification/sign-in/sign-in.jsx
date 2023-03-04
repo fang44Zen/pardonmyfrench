@@ -4,10 +4,8 @@ import {
   signInWithGooglePopup,
   createUserDocumentFromAuth,
   signInUserMailnPass,
-  auth,
 } from "../../../utils/firebase/firebase.utils";
-import { useState, useContext } from "react";
-import { UserContext } from "../../../context/UserContext";
+import { useState } from "react";
 
 const defaultInputValues = {
   email: "",
@@ -17,13 +15,9 @@ const defaultInputValues = {
 const SignIn = () => {
   const [inputValues, setInputValues] = useState(defaultInputValues);
   const { email, password } = inputValues;
-  const { setCurrentUser } = useContext(UserContext);
 
   const googleUserLog = async () => {
-    const { user } = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(user);
-    setCurrentUser(user);
-    console.log(auth);
+    await signInWithGooglePopup();
   };
 
   const inputHandler = (event) => {
@@ -35,7 +29,6 @@ const SignIn = () => {
     event.preventDefault();
     try {
       const { user } = await signInUserMailnPass(email, password);
-      setCurrentUser(user);
       setInputValues(defaultInputValues);
     } catch (error) {
       switch (error.code) {
