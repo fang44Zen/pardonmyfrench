@@ -4,6 +4,7 @@ import { useState } from "react";
 import {
   createUserMailnPass,
   createUserDocumentFromAuth,
+  signInWithGooglePopup,
 } from "../../../utils/firebase/firebase.utils";
 
 const inputDefaultValues = {
@@ -20,6 +21,10 @@ const SignUp = () => {
   const inputHandler = (event) => {
     const { name, value } = event.target;
     setInputValues({ ...inputValues, [name]: value });
+  };
+
+  const googleUserLog = async () => {
+    await signInWithGooglePopup();
   };
 
   const handleSubmit = async (event) => {
@@ -84,7 +89,10 @@ const SignUp = () => {
           >
             Create
           </button>
-          <button className="sign-up-main_form_google-button">
+          <button
+            onClick={googleUserLog}
+            className="sign-up-main_form_google-button"
+          >
             connect with google
             <FcGoogle />
           </button>
