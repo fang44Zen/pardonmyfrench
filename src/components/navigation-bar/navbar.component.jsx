@@ -27,7 +27,7 @@ const Navbar = () => {
               isActive ? "navbar-link-active" : "navbar-link-unactive"
             }
           >
-            <li>Create Exercices</li>
+            <li>Create Exercises</li>
           </NavLink>
           <NavLink
             to="exercices"
@@ -35,7 +35,7 @@ const Navbar = () => {
               isActive ? "navbar-link-active" : "navbar-link-unactive"
             }
           >
-            <li>Exercices</li>
+            <li>Exercises</li>
           </NavLink>
         </ul>
         {currentUser ? (

@@ -62,7 +62,7 @@ const CreateQuestion = () => {
             onChange={inputHandler}
           />
           <button className="subQuestion" onClick={addQuestion}>
-            Send
+            Add
             <IoIosAddCircle color="white" />
           </button>
         </div>

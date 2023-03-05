@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const MenuCreator = () => {
   return (
     <div className="main-create-exo">
-      <h1>What type of exercice you want?</h1>
+      <h1>What type of exercise you want?</h1>
       <div className="exotocreate">
         <ul className="exotocreate_list-exo">
           <li>
