@@ -1,40 +1,72 @@
 import "./create-questions.scss";
-import { doc, updateDoc, arrayUnion, getDoc } from "firebase/firestore";
+import { doc, updateDoc, arrayUnion } from "firebase/firestore";
 import { dataBase, auth } from "../../utils/firebase/firebase.utils";
-import { UserContext } from "../../context/UserContext";
-import { useContext } from "react";
+import { IoIosAddCircle } from "react-icons/io";
+import { useState } from "react";
+
+const questionsDefaultValues = {
+  question: "",
+  answer: "",
+  hint: "",
+};
 
 const CreateQuestion = () => {
-  const { currentUser } = useContext(UserContext);
+  const [inputValues, setInputValue] = useState(questionsDefaultValues);
+  const { question, answer, hint } = inputValues;
+
+  const inputHandler = (event) => {
+    const { value, name } = event.target;
+    setInputValue({ ...inputValues, [name]: value });
+  };
 
   const addQuestion = async () => {
     const questionsRef = doc(dataBase, "users", auth.currentUser.uid);
     await updateDoc(questionsRef, {
       questions: arrayUnion({
-        question: "aller",
-        answer: "peut-être",
-        hint: "yes!",
+        question: question,
+        answer: answer,
+        hint: hint,
       }),
     });
-  };
-
-  const questionHandler = async () => {
-    const docRef = doc(dataBase, "users", currentUser.uid);
-    const docSnap = await getDoc(docRef);
-    console.log(docSnap.data());
+    setInputValue(questionsDefaultValues);
   };
 
   return (
     <div>
-      <h1>Question creator</h1>
-      <label>question</label>
-      <input type="texte" />
-      <label>answer</label>
-      <input type="texte" />
-      <label>hint</label>
-      <input type="texte" />
-      <button onClick={addQuestion}>Send</button>
-      <button onClick={questionHandler}>show questions</button>
+      <div className="question-creator">
+        <div className="question-creator_qzone">
+          <h2>Create your question</h2>
+          <h3>question</h3>
+          <input
+            placeholder="question"
+            type="texte"
+            value={question}
+            name="question"
+            onChange={inputHandler}
+          />
+          <h3>answer</h3>
+          <input
+            placeholder="answer"
+            type="texte"
+            value={answer}
+            name="answer"
+            onChange={inputHandler}
+          />
+          <h3>hint</h3>
+          <input
+            placeholder="hint (optional)"
+            className=""
+            type="texte"
+            value={hint}
+            name="hint"
+            onChange={inputHandler}
+          />
+          <button className="subQuestion" onClick={addQuestion}>
+            Send
+            <IoIosAddCircle color="white" />
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

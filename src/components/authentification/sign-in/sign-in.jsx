@@ -2,10 +2,11 @@ import "./sign-in.scss";
 import { FcGoogle } from "react-icons/fc";
 import {
   signInWithGooglePopup,
-  createUserDocumentFromAuth,
   signInUserMailnPass,
 } from "../../../utils/firebase/firebase.utils";
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useState, useContext } from "react";
+import { UserContext } from "../../../context/UserContext";
 
 const defaultInputValues = {
   email: "",
@@ -15,9 +16,17 @@ const defaultInputValues = {
 const SignIn = () => {
   const [inputValues, setInputValues] = useState(defaultInputValues);
   const { email, password } = inputValues;
+  const { currentUser } = useContext(UserContext);
+  const navigate = useNavigate();
 
+  const redirectHomePage = () => {
+    navigate("/");
+  };
   const googleUserLog = async () => {
     await signInWithGooglePopup();
+    if (!currentUser) {
+      redirectHomePage();
+    }
   };
 
   const inputHandler = (event) => {
@@ -28,7 +37,7 @@ const SignIn = () => {
   const handlerConnect = async (event) => {
     event.preventDefault();
     try {
-      const { user } = await signInUserMailnPass(email, password);
+      await signInUserMailnPass(email, password);
       setInputValues(defaultInputValues);
     } catch (error) {
       switch (error.code) {
