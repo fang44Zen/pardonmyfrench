@@ -15,9 +15,8 @@ const HomePage = () => {
       const userNameHandler = async () => {
         const userNameRef = doc(dataBase, "users", currentUser.uid);
         const userNameSnapshot = await getDoc(userNameRef);
-        if (userNameSnapshot.exists()) {
-          setUserName(userNameSnapshot.data().displayName);
-        }
+
+        setUserName(userNameSnapshot.data().displayName);
       };
       userNameHandler();
     }

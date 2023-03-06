@@ -3,7 +3,9 @@ import { FcGoogle } from "react-icons/fc";
 import {
   signInWithGooglePopup,
   signInUserMailnPass,
+  dataBase,
 } from "../../../utils/firebase/firebase.utils";
+import { doc, getDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
 import { UserContext } from "../../../context/UserContext";
@@ -22,10 +24,18 @@ const SignIn = () => {
   const redirectHomePage = () => {
     navigate("/");
   };
+
   const googleUserLog = async () => {
     await signInWithGooglePopup();
-    if (!currentUser) {
-      redirectHomePage();
+    const userNameRef = doc(dataBase, "users", currentUser.uid);
+    let userNameSnapshot;
+    while (!userNameSnapshot) {
+      userNameSnapshot = await getDoc(userNameRef);
+      if (userNameSnapshot.exists) {
+        redirectHomePage();
+        break;
+      }
+      await new Promise((resolve) => setTimeout(resolve, 1000));
     }
   };
 
