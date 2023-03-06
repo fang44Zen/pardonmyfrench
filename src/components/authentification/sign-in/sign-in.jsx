@@ -3,6 +3,7 @@ import { FcGoogle } from "react-icons/fc";
 import {
   signInWithGooglePopup,
   signInUserMailnPass,
+  createUserDocumentFromAuth,
   dataBase,
 } from "../../../utils/firebase/firebase.utils";
 import { doc, getDoc } from "firebase/firestore";
@@ -18,7 +19,7 @@ const defaultInputValues = {
 const SignIn = () => {
   const [inputValues, setInputValues] = useState(defaultInputValues);
   const { email, password } = inputValues;
-  const { currentUser } = useContext(UserContext);
+  const { currentUser, setCurrentUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   const redirectHomePage = () => {
@@ -26,8 +27,10 @@ const SignIn = () => {
   };
 
   const googleUserLog = async () => {
-    await signInWithGooglePopup();
-    const userNameRef = doc(dataBase, "users", currentUser.uid);
+    const { user } = await signInWithGooglePopup();
+    createUserDocumentFromAuth(user);
+    setCurrentUser(user);
+    const userNameRef = doc(dataBase, "users", user.uid);
     let userNameSnapshot;
     while (!userNameSnapshot) {
       userNameSnapshot = await getDoc(userNameRef);
