@@ -1,6 +1,8 @@
 import "./sign-up.scss";
 import { FcGoogle } from "react-icons/fc";
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useState, userContext, useContext } from "react";
+import { UserContext } from "../../../context/UserContext";
 import {
   createUserMailnPass,
   createUserDocumentFromAuth,
@@ -17,6 +19,12 @@ const inputDefaultValues = {
 const SignUp = () => {
   const [inputValues, setInputValues] = useState(inputDefaultValues);
   const { displayName, email, password, confirmPassword } = inputValues;
+  const { setCurrentUser } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  const redirectHomePage = () => {
+    navigate("/");
+  };
 
   const inputHandler = (event) => {
     const { name, value } = event.target;
@@ -24,7 +32,10 @@ const SignUp = () => {
   };
 
   const googleUserLog = async () => {
-    await signInWithGooglePopup();
+    const { user } = await signInWithGooglePopup();
+    createUserDocumentFromAuth(user);
+    setCurrentUser(user);
+    redirectHomePage();
   };
 
   const handleSubmit = async (event) => {

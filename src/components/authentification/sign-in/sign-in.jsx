@@ -19,27 +19,32 @@ const defaultInputValues = {
 const SignIn = () => {
   const [inputValues, setInputValues] = useState(defaultInputValues);
   const { email, password } = inputValues;
-  const { currentUser, setCurrentUser } = useContext(UserContext);
+  const { setCurrentUser, setCurrentUserName } = useContext(UserContext);
   const navigate = useNavigate();
 
   const redirectHomePage = () => {
     navigate("/");
   };
-
-  const googleUserLog = async () => {
-    const { user } = await signInWithGooglePopup();
-    createUserDocumentFromAuth(user);
-    setCurrentUser(user);
+  const createUserAndFetchDisplayName = async (user) => {
+    await createUserDocumentFromAuth(user);
     const userNameRef = doc(dataBase, "users", user.uid);
     let userNameSnapshot;
     while (!userNameSnapshot) {
       userNameSnapshot = await getDoc(userNameRef);
       if (userNameSnapshot.exists) {
+        const displayName = userNameSnapshot.data().displayName;
+        setCurrentUserName(displayName);
         redirectHomePage();
         break;
       }
       await new Promise((resolve) => setTimeout(resolve, 1000));
     }
+  };
+
+  const googleUserLog = async () => {
+    const { user } = await signInWithGooglePopup();
+    createUserAndFetchDisplayName(user);
+    setCurrentUser(user);
   };
 
   const inputHandler = (event) => {
@@ -50,8 +55,10 @@ const SignIn = () => {
   const handlerConnect = async (event) => {
     event.preventDefault();
     try {
-      await signInUserMailnPass(email, password);
+      const { user } = await signInUserMailnPass(email, password);
+      setCurrentUser(user);
       setInputValues(defaultInputValues);
+      redirectHomePage();
     } catch (error) {
       switch (error.code) {
         case "auth/wrong-password":
