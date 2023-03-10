@@ -4,7 +4,7 @@ import { UserContext } from "../../context/UserContext";
 import "./home.scss";
 
 const HomePage = () => {
-  const [userName, setUserName] = useState("oui");
+  const [userName, setUserName] = useState("");
   const { currentUserName, currentUser } = useContext(UserContext);
 
   // useEffect(() => {

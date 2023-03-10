@@ -23,7 +23,7 @@ const SignIn = () => {
   const navigate = useNavigate();
 
   const redirectHomePage = () => {
-    navigate("/");
+    navigate("/pardonmyfrench");
   };
   const createUserAndFetchDisplayName = async (user) => {
     await createUserDocumentFromAuth(user);
@@ -58,6 +58,7 @@ const SignIn = () => {
       const { user } = await signInUserMailnPass(email, password);
       setCurrentUser(user);
       setInputValues(defaultInputValues);
+      createUserAndFetchDisplayName(user);
       redirectHomePage();
     } catch (error) {
       switch (error.code) {

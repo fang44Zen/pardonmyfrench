@@ -13,17 +13,20 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Navbar />}>
+        <Route path="pardonmyfrench" element={<Navbar />}>
           <Route index element={<HomePage />} />
-          <Route path="/exercices" element={<Exercices />} />
-          <Route path="/create-exo" element={<CreateExo />} />
+          <Route path="/pardonmyfrench/exercices" element={<Exercices />} />
+          <Route path="/pardonmyfrench/create-exo" element={<CreateExo />} />
           <Route
-            path="/create-exo/questions-creator"
+            path="/pardonmyfrench/create-exo/questions-creator"
             element={<CreateQuestion />}
           />
-          <Route exact path="/login-page" element={<AuthPage />}>
+          <Route exact path="/pardonmyfrench/login-page" element={<AuthPage />}>
             <Route index element={<SignIn />} />
-            <Route path="/login-page/signup" element={<SignUp />} />
+            <Route
+              path="/pardonmyfrench/login-page/signup"
+              element={<SignUp />}
+            />
           </Route>
         </Route>
       </Routes>

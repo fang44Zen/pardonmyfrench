@@ -23,7 +23,7 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   const redirectHomePage = () => {
-    navigate("/");
+    navigate("/pardonmyfrench");
   };
 
   const inputHandler = (event) => {

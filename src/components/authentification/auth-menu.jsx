@@ -21,7 +21,7 @@ const AuthMenu = () => {
             className={({ isActive }) =>
               isActive ? "auth-bar_link-active" : "auth-bar_link-unactive"
             }
-            to="/login-page/signup"
+            to="signup"
           >
             <h3>Sign Up</h3>
           </NavLink>
