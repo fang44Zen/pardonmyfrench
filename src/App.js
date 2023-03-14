@@ -8,30 +8,62 @@ import CreateQuestion from "./components/create-question/create-questions";
 import AuthPage from "./routes/authentification-pages/auth-page";
 import SignIn from "./components/authentification/sign-in/sign-in";
 import SignUp from "./components/authentification/sign-up/sign-up";
+import { useEffect, useState } from "react";
+import LoadingPage from "./components/loading-page/loading-page";
 
-function App() {
+const App = () => {
+  const [isDataLoaded, setIsDataLoaded] = useState(false);
+
+  useEffect(() => {
+    const handleRefresh = () => {
+      setIsDataLoaded(false);
+    };
+
+    window.addEventListener("beforeunload", handleRefresh);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleRefresh);
+    };
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsDataLoaded(true);
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="App">
-      <Routes>
-        <Route path="pardonmyfrench" element={<Navbar />}>
-          <Route index element={<HomePage />} />
-          <Route path="/pardonmyfrench/exercices" element={<Exercices />} />
-          <Route path="/pardonmyfrench/create-exo" element={<CreateExo />} />
-          <Route
-            path="/pardonmyfrench/create-exo/questions-creator"
-            element={<CreateQuestion />}
-          />
-          <Route exact path="/pardonmyfrench/login-page" element={<AuthPage />}>
-            <Route index element={<SignIn />} />
+      {isDataLoaded ? (
+        <Routes>
+          <Route path="pardonmyfrench" element={<Navbar />}>
+            <Route index element={<HomePage />} />
+            <Route path="/pardonmyfrench/exercices" element={<Exercices />} />
+            <Route path="/pardonmyfrench/create-exo" element={<CreateExo />} />
             <Route
-              path="/pardonmyfrench/login-page/signup"
-              element={<SignUp />}
+              path="/pardonmyfrench/create-exo/questions-creator"
+              element={<CreateQuestion />}
             />
+            <Route
+              exact
+              path="/pardonmyfrench/login-page"
+              element={<AuthPage />}
+            >
+              <Route index element={<SignIn />} />
+              <Route
+                path="/pardonmyfrench/login-page/signup"
+                element={<SignUp />}
+              />
+            </Route>
           </Route>
-        </Route>
-      </Routes>
+        </Routes>
+      ) : (
+        <LoadingPage />
+      )}
     </div>
   );
-}
+};
 
 export default App;

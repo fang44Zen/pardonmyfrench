@@ -5,7 +5,7 @@ import { auth } from "../../utils/firebase/firebase.utils";
 import "./home.scss";
 
 const HomePage = () => {
-  const { currentUser } = useContext(UserContext);
+  const { currentUser = null } = useContext(UserContext);
 
   return (
     <div>
