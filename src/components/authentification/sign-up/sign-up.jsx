@@ -8,6 +8,7 @@ import {
   createUserDocumentFromAuth,
   signInWithGooglePopup,
 } from "../../../utils/firebase/firebase.utils";
+import { updateProfile } from "firebase/auth";
 
 const inputDefaultValues = {
   displayName: "",
@@ -47,6 +48,7 @@ const SignUp = () => {
     try {
       const { user } = await createUserMailnPass(email, password);
       await createUserDocumentFromAuth(user, { displayName });
+      await updateProfile(user, { displayName: displayName });
       setInputValues(inputDefaultValues);
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {

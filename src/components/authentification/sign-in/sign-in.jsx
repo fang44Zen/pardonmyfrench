@@ -44,7 +44,7 @@ const SignIn = () => {
   const googleUserLog = async () => {
     const { user } = await signInWithGooglePopup();
     createUserAndFetchDisplayName(user);
-    setCurrentUser(user);
+    // setCurrentUser(user);
   };
 
   const inputHandler = (event) => {
@@ -56,7 +56,7 @@ const SignIn = () => {
     event.preventDefault();
     try {
       const { user } = await signInUserMailnPass(email, password);
-      setCurrentUser(user);
+      // setCurrentUser(user);
       setInputValues(defaultInputValues);
       createUserAndFetchDisplayName(user);
       redirectHomePage();

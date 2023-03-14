@@ -1,37 +1,19 @@
-import { useEffect, useState, useContext } from "react";
+import { useContext } from "react";
 
 import { UserContext } from "../../context/UserContext";
+import { auth } from "../../utils/firebase/firebase.utils";
 import "./home.scss";
 
 const HomePage = () => {
-  const [userName, setUserName] = useState("");
-  const { currentUserName, currentUser } = useContext(UserContext);
-
-  // useEffect(() => {
-  //   if (currentUser === null) {
-  //     setUserName("");
-  //   } else {
-  //     const userNameHandler = async () => {
-  //       const userNameRef = doc(dataBase, "users", currentUser.uid);
-  //       const userNameSnapshot = await getDoc(userNameRef);
-  //       console.log(userNameSnapshot.data());
-  //       setUserName(userNameSnapshot.data().displayName);
-  //     };
-  //     userNameHandler();
-  //   }
-  // }, [currentUser]);
-
-  useEffect(() => {
-    if (currentUser) {
-      setUserName(currentUserName);
-    } else {
-      setUserName("");
-    }
-  }, [currentUserName, currentUser]);
+  const { currentUser } = useContext(UserContext);
 
   return (
     <div>
-      <h1>Welcome: {userName}</h1>
+      {currentUser ? (
+        <h1>Welcome: {auth.currentUser.displayName}</h1>
+      ) : (
+        <h1>Please connect your account</h1>
+      )}
     </div>
   );
 };
