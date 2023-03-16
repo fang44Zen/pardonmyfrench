@@ -2,7 +2,9 @@ import "./create-questions.scss";
 import { doc, updateDoc, arrayUnion } from "firebase/firestore";
 import { dataBase, auth } from "../../utils/firebase/firebase.utils";
 import { IoIosAddCircle } from "react-icons/io";
+import { MdOutlineBackspace } from "react-icons/md";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const questionsDefaultValues = {
   question: "",
@@ -20,15 +22,17 @@ const CreateQuestion = () => {
   };
 
   const addQuestion = async () => {
-    const questionsRef = doc(dataBase, "users", auth.currentUser.uid);
-    await updateDoc(questionsRef, {
-      questions: arrayUnion({
-        question: question,
-        answer: answer,
-        hint: hint,
-      }),
-    });
-    setInputValue(questionsDefaultValues);
+    if (!question === "") {
+      const questionsRef = doc(dataBase, "users", auth.currentUser.uid);
+      await updateDoc(questionsRef, {
+        questions: arrayUnion({
+          question: question,
+          answer: answer,
+          hint: hint,
+        }),
+      });
+      setInputValue(questionsDefaultValues);
+    }
   };
 
   return (
@@ -61,10 +65,16 @@ const CreateQuestion = () => {
             name="hint"
             onChange={inputHandler}
           />
-          <button className="subQuestion" onClick={addQuestion}>
-            Add
-            <IoIosAddCircle color="white" />
-          </button>
+          <div className="question-creator_qzone_button-zone">
+            <button className="subq-button" onClick={addQuestion}>
+              Add
+              <IoIosAddCircle color="white" />
+            </button>
+            <Link to="/pardonmyfrench/create-exo" className="cancel-button">
+              Quit
+              <MdOutlineBackspace />
+            </Link>
+          </div>
         </div>
       </div>
     </div>

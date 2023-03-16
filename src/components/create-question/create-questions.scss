@@ -17,6 +17,12 @@ $bg-color: #404258;
     h2 {
       color: white;
     }
+
+    &_button-zone {
+      display: flex;
+      gap: 15px;
+    }
+
     input {
       background-color: darken(white, 12%);
       text-decoration: none;
@@ -30,7 +36,7 @@ $bg-color: #404258;
         color: black;
       }
     }
-    .subQuestion {
+    .subq-button {
       display: flex;
       align-items: center;
       gap: 6px;
@@ -42,6 +48,19 @@ $bg-color: #404258;
       border: solid 4px $main-color;
 
       border-radius: 25px;
+    }
+    .cancel-button {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px;
+      font-family: "Roboto";
+      font-size: 22px;
+      color: white;
+      border: solid 4px $main-color;
+      border-radius: 25px;
+      background-color: transparentize(#ea5455, 0.4);
     }
   }
 }

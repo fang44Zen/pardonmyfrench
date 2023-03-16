@@ -7,10 +7,7 @@ const MenuCreator = () => {
       <div className="exotocreate">
         <ul className="exotocreate_list-exo">
           <li>
-            <Link
-              to="/create-exo/questions-creator"
-              className="exotocreate_list-exo-link"
-            >
+            <Link to="questions-creator" className="exotocreate_list-exo-link">
               <h3>Create questions</h3>
               <span className="material-symbols-outlined">
                 arrow_forward_ios
