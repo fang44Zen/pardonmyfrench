@@ -1,0 +1,75 @@
+$main-color: #ffb84c;
+$bg-color: #404258;
+
+@mixin buttonDefault($bg-color) {
+  font-family: "Roboto";
+  font-size: 1rem;
+  background-color: $bg-color;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  div {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  &:hover {
+    background-color: lighten($color: $bg-color, $amount: 40);
+    color: black;
+  }
+}
+
+.question-card {
+  display: flex;
+  justify-content: center;
+
+  padding: 1rem;
+  &_card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 8px;
+    border: 4px solid #ffb84c;
+    border-radius: 8px;
+    &_question {
+      font-size: 1.3rem;
+      color: white;
+    }
+
+    &_button {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      &_hint {
+        @include buttonDefault(#3a98b9);
+      }
+      &_check {
+        @include buttonDefault(#5d9c59);
+      }
+      &_answer {
+        @include buttonDefault(#ff6464);
+      }
+    }
+
+    &_input {
+      display: grid;
+      grid-template-columns: 6fr 1fr;
+      align-items: baseline;
+      gap: 1rem;
+      input {
+        background-color: darken(white, 12%);
+        text-decoration: none;
+        border: solid 2px $main-color;
+        border-radius: 22px;
+        padding-left: 8px;
+        font-family: "Roboto";
+        font-size: 1.4rem;
+        &:focus {
+          outline: none !important;
+          color: black;
+        }
+      }
+    }
+  }
+}
