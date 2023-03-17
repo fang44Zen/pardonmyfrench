@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/pardonmyfrench/static/css/main.3bdd4a6a.css",
-    "main.js": "/pardonmyfrench/static/js/main.a183f2b4.js",
+    "main.css": "/pardonmyfrench/static/css/main.265eb69e.css",
+    "main.js": "/pardonmyfrench/static/js/main.82d0439f.js",
     "index.html": "/pardonmyfrench/index.html",
-    "main.3bdd4a6a.css.map": "/pardonmyfrench/static/css/main.3bdd4a6a.css.map",
-    "main.a183f2b4.js.map": "/pardonmyfrench/static/js/main.a183f2b4.js.map"
+    "main.265eb69e.css.map": "/pardonmyfrench/static/css/main.265eb69e.css.map",
+    "main.82d0439f.js.map": "/pardonmyfrench/static/js/main.82d0439f.js.map"
   },
   "entrypoints": [
-    "static/css/main.3bdd4a6a.css",
-    "static/js/main.a183f2b4.js"
+    "static/css/main.265eb69e.css",
+    "static/js/main.82d0439f.js"
   ]
 }
