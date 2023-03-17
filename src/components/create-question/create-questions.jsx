@@ -22,7 +22,7 @@ const CreateQuestion = () => {
   };
 
   const addQuestion = async () => {
-    if (!question === "") {
+    if (question !== "" && answer !== "") {
       const questionsRef = doc(dataBase, "users", auth.currentUser.uid);
       await updateDoc(questionsRef, {
         questions: arrayUnion({
@@ -31,6 +31,7 @@ const CreateQuestion = () => {
           hint: hint,
         }),
       });
+      console.log("click");
       setInputValue(questionsDefaultValues);
     }
   };
@@ -42,6 +43,7 @@ const CreateQuestion = () => {
           <h2>Create your question</h2>
           <h3>question</h3>
           <input
+            required
             placeholder="question"
             type="texte"
             value={question}
@@ -50,6 +52,7 @@ const CreateQuestion = () => {
           />
           <h3>answer</h3>
           <input
+            required
             placeholder="answer"
             type="texte"
             value={answer}

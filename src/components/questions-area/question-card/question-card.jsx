@@ -4,7 +4,7 @@ import { MdHelpOutline } from "react-icons/md";
 import { TfiFaceSad } from "react-icons/tfi";
 
 import { useState } from "react";
-const QuestionCard = () => {
+const QuestionCard = ({ question, answer, hint }) => {
   const [showHint, setShowHint] = useState(false);
   const [showAnswer, setShowAnswer] = useState(false);
 
@@ -28,7 +28,7 @@ const QuestionCard = () => {
     <div className="question-card">
       <div className="question-card_card">
         <div>
-          <h3 className="question-card_card_question">Your question</h3>
+          <h3 className="question-card_card_question">{question}</h3>
         </div>
         <div className="question-card_card_input">
           <input placeholder="Answer" />
@@ -40,7 +40,7 @@ const QuestionCard = () => {
               Hint <MdHelpOutline />
             </div>
           </button>
-          {showHint && <h3>Here is your hint</h3>}
+          {showHint && <h3>{hint}</h3>}
         </div>
         <div className="question-card_card_button">
           <button className="question-card_card_button_check">
@@ -58,7 +58,7 @@ const QuestionCard = () => {
             </div>
           </button>
 
-          {showAnswer && <h3>Here is your answer</h3>}
+          {showAnswer && <h3>{answer}</h3>}
         </div>
       </div>
     </div>

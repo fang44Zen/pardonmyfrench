@@ -50,6 +50,7 @@ const SignUp = () => {
       await createUserDocumentFromAuth(user, { displayName });
       await updateProfile(user, { displayName: displayName });
       setInputValues(inputDefaultValues);
+      redirectHomePage();
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
         alert("Email already used");

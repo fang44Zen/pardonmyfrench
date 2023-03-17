@@ -25,9 +25,13 @@ const ListQuestion = () => {
     <div>
       {currentUser ? (
         <div>
-          <QuestionCard />
           {questionList.map((elem, id) => (
-            <li key={id}>{elem.question}</li>
+            <QuestionCard
+              key={id}
+              question={elem.question}
+              answer={elem.answer}
+              hint={elem.hint}
+            />
           ))}
         </div>
       ) : (
