@@ -5,6 +5,7 @@ $bg-color: #404258;
   margin-top: 20px;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   &_qzone {
     border: solid 4px $main-color;
     border-radius: 8px;
@@ -46,7 +47,6 @@ $bg-color: #404258;
       color: white;
       background-color: #404258;
       border: solid 4px $main-color;
-
       border-radius: 25px;
     }
     .cancel-button {
@@ -61,6 +61,39 @@ $bg-color: #404258;
       border: solid 4px $main-color;
       border-radius: 25px;
       background-color: transparentize(#ea5455, 0.4);
+    }
+  }
+}
+
+.block-q {
+  display: flex;
+  justify-content: center;
+}
+
+.select-group {
+  &_add-group {
+    input {
+      background-color: darken(white, 12%);
+      text-decoration: none;
+      border: solid 2px $main-color;
+      border-radius: 22px 0px 0px 22px;
+      padding: 8px;
+      font-family: "Roboto";
+      font-size: 22px;
+      &:focus {
+        outline: none !important;
+        color: black;
+      }
+    }
+    button {
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      padding: 8px;
+      font-family: "Roboto";
+      font-size: 22px;
+      color: white;
+      background-color: #404258;
+      border: solid 2px $main-color;
+      border-radius: 0px 22px 22px 0px;
     }
   }
 }
