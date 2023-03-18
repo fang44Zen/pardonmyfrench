@@ -5,8 +5,8 @@ import { IoIosAddCircle } from "react-icons/io";
 import { MdOutlineBackspace } from "react-icons/md";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
 const questionsDefaultValues = {
+  groupeQuestion: "",
   question: "",
   answer: "",
   hint: "",
@@ -14,24 +14,24 @@ const questionsDefaultValues = {
 
 const CreateQuestion = () => {
   const [inputValues, setInputValue] = useState(questionsDefaultValues);
-  const { question, answer, hint } = inputValues;
+  const { groupeQuestion, question, answer, hint } = inputValues;
 
   const inputHandler = (event) => {
     const { value, name } = event.target;
     setInputValue({ ...inputValues, [name]: value });
   };
-
   const addQuestion = async () => {
     if (question !== "" && answer !== "") {
       const questionsRef = doc(dataBase, "users", auth.currentUser.uid);
       await updateDoc(questionsRef, {
-        questions: arrayUnion({
+        //On cherche la valeur précide dans "questions" et entre crochet et non accolade
+        //El famoso syntaxe qui change celon les humeur :(
+        [`questions.${groupeQuestion}`]: arrayUnion({
           question: question,
           answer: answer,
           hint: hint,
         }),
       });
-      console.log("click");
       setInputValue(questionsDefaultValues);
     }
   };
@@ -41,6 +41,15 @@ const CreateQuestion = () => {
       <div className="question-creator">
         <div className="question-creator_qzone">
           <h2>Create your question</h2>
+          <h3>groupe</h3>
+          <input
+            required
+            placeholder="Groupe"
+            type="texte"
+            value={groupeQuestion}
+            name="groupeQuestion"
+            onChange={inputHandler}
+          />
           <h3>question</h3>
           <input
             required

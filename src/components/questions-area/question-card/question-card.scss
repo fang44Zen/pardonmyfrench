@@ -38,6 +38,14 @@ $bg-color: #404258;
     }
 
     &_button {
+      @media only screen and (max-width: 365px) {
+        display: grid;
+        div {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
       display: flex;
       justify-content: center;
       gap: 1rem;
@@ -54,10 +62,10 @@ $bg-color: #404258;
 
     &_input {
       display: grid;
-      grid-template-columns: 6fr 1fr;
-      align-items: baseline;
-      gap: 1rem;
       input {
+        @media only screen and (max-width: 365px) {
+          font-size: 1.2rem;
+        }
         background-color: darken(white, 12%);
         text-decoration: none;
         border: solid 2px $main-color;

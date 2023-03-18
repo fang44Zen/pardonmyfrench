@@ -32,6 +32,8 @@ const QuestionCard = ({ question, answer, hint }) => {
         </div>
         <div className="question-card_card_input">
           <input placeholder="Answer" />
+        </div>
+        <div className="question-card_card_button">
           <button
             className="question-card_card_button_hint"
             onClick={hintHandler}
@@ -40,9 +42,7 @@ const QuestionCard = ({ question, answer, hint }) => {
               Hint <MdHelpOutline />
             </div>
           </button>
-          {showHint && <h3>{hint}</h3>}
-        </div>
-        <div className="question-card_card_button">
+
           <button className="question-card_card_button_check">
             <div>
               Check
@@ -57,7 +57,9 @@ const QuestionCard = ({ question, answer, hint }) => {
               Show answer <TfiFaceSad />
             </div>
           </button>
-
+        </div>
+        <div className="question-card_card_hidden">
+          {showHint && <h3>{hint}</h3>}
           {showAnswer && <h3>{answer}</h3>}
         </div>
       </div>
