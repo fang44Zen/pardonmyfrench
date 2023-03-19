@@ -3,7 +3,8 @@ import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState, useContext, useCallback } from "react";
 import { UserContext } from "../../context/UserContext";
 import { dataBase, auth } from "../../utils/firebase/firebase.utils";
-import QuestionCard from "./question-card/question-card";
+
+import QuestionBlock from "./questions-block/question-block";
 
 const ListQuestion = () => {
   const [questionList, setQuestionList] = useState([]);
@@ -25,13 +26,27 @@ const ListQuestion = () => {
     <div>
       {currentUser ? (
         <div>
-          {questionList.map((elem, id) => (
-            <QuestionCard
-              key={id}
-              question={elem.question}
-              answer={elem.answer}
-              hint={elem.hint}
-            />
+          {/* {Object.keys(questionList).map((titleGroupe, id) => (
+            <div className="question-groupe" key={id}>
+              <div className="question-groupe_small-block">
+                <h1>{titleGroupe}</h1>
+                {questionList[titleGroupe].map((elem, id) => (
+                  <QuestionCard
+                    question={elem.question}
+                    answer={elem.answer}
+                    hint={elem.hint}
+                  />
+                ))}
+              </div>
+            </div>
+          ))} */}
+          {Object.keys(questionList).map((titleGroupe, id) => (
+            <div key={id}>
+              <QuestionBlock
+                titleGroupe={titleGroupe}
+                questionList={questionList}
+              />
+            </div>
           ))}
         </div>
       ) : (
