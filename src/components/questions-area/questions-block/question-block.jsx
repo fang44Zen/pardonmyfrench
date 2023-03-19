@@ -14,7 +14,10 @@ const QuestionBlock = ({ questionList, titleGroupe }) => {
     <div>
       <div className="question-groupe">
         <div className="question-groupe_small-block">
-          <div className="question-groupe_small-block_title">
+          <div
+            className="question-groupe_small-block_title"
+            onClick={showQuestion}
+          >
             <h2>{titleGroupe}</h2>
             <button onClick={showQuestion}>
               {isVisibleQuestion ? <BiUpArrow /> : <BiDownArrow />}

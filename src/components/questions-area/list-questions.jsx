@@ -26,20 +26,6 @@ const ListQuestion = () => {
     <div>
       {currentUser ? (
         <div>
-          {/* {Object.keys(questionList).map((titleGroupe, id) => (
-            <div className="question-groupe" key={id}>
-              <div className="question-groupe_small-block">
-                <h1>{titleGroupe}</h1>
-                {questionList[titleGroupe].map((elem, id) => (
-                  <QuestionCard
-                    question={elem.question}
-                    answer={elem.answer}
-                    hint={elem.hint}
-                  />
-                ))}
-              </div>
-            </div>
-          ))} */}
           {Object.keys(questionList).map((titleGroupe, id) => (
             <div key={id}>
               <QuestionBlock

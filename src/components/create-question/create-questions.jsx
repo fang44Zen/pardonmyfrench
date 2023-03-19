@@ -16,11 +16,9 @@ const CreateQuestion = () => {
   const [inputValues, setInputValue] = useState(questionsDefaultValues);
   const { question, answer, hint } = inputValues;
   const [groupeQuestion, setGroupeQuestion] = useState("");
-  const [currentGroupe, setCurrentGroupe] = useState(
-    "Please Select or add a groupe"
-  );
+  const [currentGroupe, setCurrentGroupe] = useState("");
   const { currentUser } = useContext(UserContext);
-
+  const [showMenu, setShowMenu] = useState(false);
   const [groupList, setGroupList] = useState([]);
 
   const updateGroupeList = useCallback(async () => {
@@ -46,7 +44,7 @@ const CreateQuestion = () => {
   };
 
   const selectHandler = (event) => {
-    const val = event.target.value;
+    const val = event.target.dataset.value;
     setCurrentGroupe(val);
   };
 
@@ -93,17 +91,38 @@ const CreateQuestion = () => {
             <button onClick={addGroupeQuestion}>Add</button>
           </div>
 
-          <select onChange={selectHandler} value={currentGroupe}>
-            <option>{currentGroupe}</option>
-            {Object.keys(groupList).map((key, id) => (
-              <option key={id}>{key}</option>
-            ))}
-          </select>
+          <div className={"select-group_select-menu"}>
+            <div
+              className={
+                showMenu
+                  ? "select-group_select-menu_select-activated"
+                  : "select-group_select-menu_select"
+              }
+              onClick={() => setShowMenu(!showMenu)}
+            >
+              {currentGroupe || "Select a group"}
+            </div>
+            <div className="select-group_select-menu_dropdown">
+              <div>
+                {showMenu &&
+                  Object.keys(groupList).map((key, id) => (
+                    <div
+                      className="select-group_select-menu_option"
+                      data-value={key}
+                      onClick={selectHandler}
+                      key={id}
+                    >
+                      {key}
+                    </div>
+                  ))}
+              </div>
+            </div>
+          </div>
         </div>
         <div className="block-q">
           <div className="question-creator_qzone">
             <h2>Question about:</h2>
-            <h3> {currentGroupe}</h3>
+            <h3> {currentGroupe || "Select a groupe"}</h3>
             <h3>question</h3>
             <input
               required
