@@ -19,7 +19,7 @@ const defaultInputValues = {
 const SignIn = () => {
   const [inputValues, setInputValues] = useState(defaultInputValues);
   const { email, password } = inputValues;
-  const { setCurrentUser, setCurrentUserName } = useContext(UserContext);
+  const { setCurrentUserName } = useContext(UserContext);
   const navigate = useNavigate();
 
   const redirectHomePage = () => {

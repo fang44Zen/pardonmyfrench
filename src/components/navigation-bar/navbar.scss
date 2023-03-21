@@ -70,10 +70,12 @@ $neo-blue: #ffb84c;
       justify-content: flex-end;
     }
     .mobile-navbar-links {
+      border-bottom: #ffb84c solid 4px;
       display: flex;
       flex-direction: column;
       background-color: #404258;
       position: absolute;
+      z-index: 9999;
       top: 60px;
       left: 0;
       width: 100%;
@@ -85,6 +87,12 @@ $neo-blue: #ffb84c;
         margin: 0;
         padding: 1rem 0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      }
+      button {
+        margin: 12px;
+      }
+      p {
+        margin: 12px;
       }
     }
   }

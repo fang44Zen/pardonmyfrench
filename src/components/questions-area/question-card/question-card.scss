@@ -14,7 +14,8 @@ $bg-color: #404258;
     align-items: center;
     gap: 0.4rem;
   }
-  &:hover {
+  &:hover,
+  &:active {
     background-color: lighten($color: $bg-color, $amount: 40);
     color: black;
   }
@@ -59,12 +60,31 @@ $bg-color: #404258;
         @include buttonDefault(#ff6464);
       }
     }
-
+    &_hidden {
+      &_hint {
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 3px;
+        border: 1px solid #3a98b9;
+        border-radius: 8px;
+        color: white;
+      }
+      &_answer {
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 3px;
+        border: 1px solid #ff6464;
+        border-radius: 8px;
+        color: white;
+      }
+    }
     &_input {
       display: grid;
       input {
         @media only screen and (max-width: 365px) {
-          font-size: 1.2rem;
+          font-size: 1rem;
         }
         background-color: darken(white, 12%);
         text-decoration: none;
@@ -79,5 +99,22 @@ $bg-color: #404258;
         }
       }
     }
+  }
+}
+.hide-cotent {
+  display: none;
+}
+.disabled-button {
+  font-family: "Roboto";
+  font-size: 1rem;
+  background-color: lighten($color: $bg-color, $amount: 40);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  div {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
   }
 }

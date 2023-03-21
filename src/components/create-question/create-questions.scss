@@ -19,7 +19,18 @@ $border-style: solid 2px $main-color;
   display: flex;
   justify-content: center;
   flex-direction: column;
+
+  .groupe-empty {
+    margin-top: 10px;
+    color: $main-color;
+    h2 {
+      color: white;
+    }
+  }
   &_qzone {
+    @media only screen and (max-width: 768px) {
+      padding: 6px;
+    }
     border: solid 4px $main-color;
     border-radius: 8px;
     padding: 12px;
@@ -36,51 +47,105 @@ $border-style: solid 2px $main-color;
       display: flex;
       gap: 15px;
     }
-
-    input {
-      background-color: darken(white, 12%);
-      text-decoration: none;
-      border: solid 2px $main-color;
-      border-radius: 22px;
-      padding: 8px;
-      font-family: "Roboto";
-      font-size: 22px;
-      &:focus {
-        outline: none !important;
-        color: black;
+    @media only screen and (max-width: 768px) {
+      h3 {
+        font-size: 18px;
+      }
+      h2 {
+        font-size: 16px;
+      }
+      input {
+        background-color: darken(white, 12%);
+        text-decoration: none;
+        border: solid 2px $main-color;
+        border-radius: 22px;
+        padding: 4px;
+        font-family: "Roboto";
+        font-size: 18px;
+        &:focus {
+          outline: none !important;
+          color: black;
+        }
+      }
+      .subq-button {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px;
+        font-family: "Roboto";
+        font-size: 18px;
+        color: white;
+        background-color: #404258;
+        border: solid 4px $main-color;
+        border-radius: 25px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        transition: box-shadow 0.3s ease-in-out;
+        &:active {
+          animation: pulse 0.3s ease-in-out;
+          box-shadow: rgba(0, 0, 0, 0.75) 0px 8px 20px;
+        }
+      }
+      .cancel-button {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px;
+        font-family: "Roboto";
+        font-size: 18px;
+        color: white;
+        border: solid 4px $main-color;
+        border-radius: 25px;
+        background-color: transparentize(#ea5455, 0.4);
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
       }
     }
-    .subq-button {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px;
-      font-family: "Roboto";
-      font-size: 22px;
-      color: white;
-      background-color: #404258;
-      border: solid 4px $main-color;
-      border-radius: 25px;
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-      transition: box-shadow 0.3s ease-in-out;
-      &:active {
-        animation: pulse 0.3s ease-in-out;
-        box-shadow: rgba(0, 0, 0, 0.75) 0px 8px 20px;
+    @media only screen and (min-width: 768px) {
+      input {
+        background-color: darken(white, 12%);
+        text-decoration: none;
+        border: solid 2px $main-color;
+        border-radius: 22px;
+        padding: 8px;
+        font-family: "Roboto";
+        font-size: 22px;
+        &:focus {
+          outline: none !important;
+          color: black;
+        }
       }
-    }
-    .cancel-button {
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px;
-      font-family: "Roboto";
-      font-size: 22px;
-      color: white;
-      border: solid 4px $main-color;
-      border-radius: 25px;
-      background-color: transparentize(#ea5455, 0.4);
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      .subq-button {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px;
+        font-family: "Roboto";
+        font-size: 22px;
+        color: white;
+        background-color: #404258;
+        border: solid 4px $main-color;
+        border-radius: 25px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        transition: box-shadow 0.3s ease-in-out;
+        &:active {
+          animation: pulse 0.3s ease-in-out;
+          box-shadow: rgba(0, 0, 0, 0.75) 0px 8px 20px;
+        }
+      }
+      .cancel-button {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px;
+        font-family: "Roboto";
+        font-size: 22px;
+        color: white;
+        border: solid 4px $main-color;
+        border-radius: 25px;
+        background-color: transparentize(#ea5455, 0.4);
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      }
     }
   }
 }
@@ -96,35 +161,74 @@ $border-style: solid 2px $main-color;
   margin: 10px;
   &_add-group {
     margin: 10px;
-    input {
-      background-color: darken(white, 12%);
-      text-decoration: none;
-      border: solid 2px $main-color;
-      border-radius: 22px 0px 0px 22px;
-      padding: 8px;
-      font-family: "Roboto";
-      font-size: 22px;
-      &:focus {
-        outline: none !important;
-        color: black;
+    @media only screen and (max-width: 768px) {
+      display: flex;
+      flex-direction: column;
+      margin: 3px;
+      input {
+        margin-left: auto;
+        margin-right: auto;
+        background-color: darken(white, 12%);
+        text-decoration: none;
+        border: solid 2px $main-color;
+        border-radius: 22px;
+        padding: 8px;
+        font-family: "Roboto";
+        font-size: 16px;
+        &:focus {
+          outline: none !important;
+          color: black;
+        }
+      }
+      button {
+        width: 8vh;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 5px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        padding: 2px;
+        font-family: "Roboto";
+        font-size: 14px;
+        color: white;
+        background-color: #404258;
+        border: solid 2px $main-color;
+        border-radius: 22px;
       }
     }
-    button {
-      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-      padding: 8px;
-      font-family: "Roboto";
-      font-size: 22px;
-      color: white;
-      background-color: #404258;
-      border: solid 2px $main-color;
-      border-radius: 0px 22px 22px 0px;
+    @media only screen and (min-width: 768px) {
+      input {
+        background-color: darken(white, 12%);
+        text-decoration: none;
+        border: solid 2px $main-color;
+        border-radius: 22px 0px 0px 22px;
+        padding: 8px;
+        font-family: "Roboto";
+        font-size: 22px;
+        &:focus {
+          outline: none !important;
+          color: black;
+        }
+      }
+      button {
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        padding: 8px;
+        font-family: "Roboto";
+        font-size: 22px;
+        color: white;
+        background-color: #404258;
+        border: solid 2px $main-color;
+        border-radius: 0px 22px 22px 0px;
+      }
     }
   }
 
   &_select-menu {
-    position: relative;
-    z-index: 1;
-    transform: translateZ(0);
+    @media only screen and (max-width: 768px) {
+      width: 22vh;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 18px;
+    }
     width: 40vh;
     margin-left: auto;
     margin-right: auto;
@@ -139,6 +243,12 @@ $border-style: solid 2px $main-color;
       &:hover {
         background-color: lighten($bg-color, 10%);
       }
+      .style-groupe-menu {
+        margin-left: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
     }
     &_select-activated {
       border-radius: 12px 12px 0px 0px;
@@ -146,12 +256,13 @@ $border-style: solid 2px $main-color;
       padding: 4px;
       border-bottom: solid 2px $main-color;
       margin-bottom: 8px;
+      .style-groupe-menu {
+        margin-left: 12px;
+        display: flex;
+        justify-content: space-between;
+      }
     }
     &_dropdown {
-      border: solid 2px $main-color;
-      position: absolute;
-      top: calc(100% + 10px);
-      left: 0;
       background-color: #404258;
     }
     &_option {
@@ -166,4 +277,37 @@ $border-style: solid 2px $main-color;
       }
     }
   }
+}
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+.shake-button {
+  animation: shake 2s;
+}
+.error-message {
+  @media only screen and (max-width: 400px) {
+    font-size: 12px;
+  }
+  color: #ff8b13;
+  margin-bottom: 5px;
 }

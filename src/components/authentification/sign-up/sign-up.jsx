@@ -1,7 +1,7 @@
 import "./sign-up.scss";
 import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
-import { useState, userContext, useContext } from "react";
+import { useState, useContext } from "react";
 import { UserContext } from "../../../context/UserContext";
 import {
   createUserMailnPass,

@@ -1,7 +1,5 @@
 import "./auth-menu.scss";
 import { NavLink, Outlet } from "react-router-dom";
-import SignIn from "./sign-in/sign-in";
-import SignUp from "./sign-up/sign-up";
 
 const AuthMenu = () => {
   return (

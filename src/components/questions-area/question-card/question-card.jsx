@@ -9,18 +9,16 @@ const QuestionCard = ({ question, answer, hint }) => {
   const [showAnswer, setShowAnswer] = useState(false);
 
   const hintHandler = () => {
-    if (showHint) {
-      setShowHint(false);
-    } else {
-      setShowHint(true);
+    setShowHint(!showHint);
+    if (showAnswer) {
+      setShowAnswer(false);
     }
   };
 
   const answerHandler = () => {
-    if (!showAnswer) {
-      setShowAnswer(true);
-    } else {
-      setShowAnswer(false);
+    setShowAnswer(!showAnswer);
+    if (showHint) {
+      setShowHint(false);
     }
   };
 
@@ -34,21 +32,23 @@ const QuestionCard = ({ question, answer, hint }) => {
           <input placeholder="Answer" />
         </div>
         <div className="question-card_card_button">
-          <button
-            className="question-card_card_button_hint"
-            onClick={hintHandler}
-          >
-            <div>
-              Hint <MdHelpOutline />
-            </div>
-          </button>
+          {hint === "" ? (
+            <button className="disabled-button">
+              <div>
+                Hint <MdHelpOutline />
+              </div>
+            </button>
+          ) : (
+            <button
+              className="question-card_card_button_hint"
+              onClick={hintHandler}
+            >
+              <div>
+                Hint <MdHelpOutline />
+              </div>
+            </button>
+          )}
 
-          <button className="question-card_card_button_check">
-            <div>
-              Check
-              <AiOutlineCheckSquare />
-            </div>
-          </button>
           <button
             className="question-card_card_button_answer"
             onClick={answerHandler}
@@ -57,10 +57,28 @@ const QuestionCard = ({ question, answer, hint }) => {
               Show answer <TfiFaceSad />
             </div>
           </button>
+          <button className="question-card_card_button_check">
+            <div>
+              Check
+              <AiOutlineCheckSquare />
+            </div>
+          </button>
         </div>
         <div className="question-card_card_hidden">
-          {showHint && <h3>{hint}</h3>}
-          {showAnswer && <h3>{answer}</h3>}
+          <div
+            className={
+              showHint ? "question-card_card_hidden_hint" : "hide-cotent"
+            }
+          >
+            {showHint && <h3>{hint}</h3>}
+          </div>
+          <div
+            className={
+              showAnswer ? "question-card_card_hidden_answer" : "hide-cotent"
+            }
+          >
+            {showAnswer && <h3>{answer}</h3>}
+          </div>
         </div>
       </div>
     </div>
