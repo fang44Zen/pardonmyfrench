@@ -39,7 +39,8 @@ export const dataBase = getFirestore();
 export const createUserDocumentFromAuth = async (
   userAuth,
   otherInfos = {},
-  questions = []
+  questions = [],
+  conjugations = []
 ) => {
   // if (!userAuth) return;
   const userDocRef = doc(dataBase, "users", userAuth.uid);
@@ -55,6 +56,7 @@ export const createUserDocumentFromAuth = async (
         email,
         ...otherInfos,
         questions,
+        conjugations,
       });
     } catch (error) {
       console.log(error.message);

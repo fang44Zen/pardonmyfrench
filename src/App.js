@@ -11,6 +11,7 @@ import SignUp from "./components/authentification/sign-up/sign-up";
 import { useEffect, useState } from "react";
 import LoadingPage from "./components/loading-page/loading-page";
 import ListQuestion from "./components/questions-area/list-questions";
+import CreateConjugation from "./components/create-conjugation/create-conjugation";
 
 const App = () => {
   const [isDataLoaded, setIsDataLoaded] = useState(false);
@@ -46,6 +47,10 @@ const App = () => {
             <Route
               path="/pardonmyfrench/create-exo/questions-creator"
               element={<CreateQuestion />}
+            />
+            <Route
+              path="/pardonmyfrench/create-exo/conjugation-creator"
+              element={<CreateConjugation />}
             />
             <Route
               path="/pardonmyfrench/exercices/list-questions"

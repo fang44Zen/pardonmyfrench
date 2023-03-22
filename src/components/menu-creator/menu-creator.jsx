@@ -18,7 +18,10 @@ const MenuCreator = () => {
             Type in the first form the question, and then the answer expected.
           </p>
           <li>
-            <Link className="exotocreate_list-exo-link">
+            <Link
+              to="conjugation-creator"
+              className="exotocreate_list-exo-link"
+            >
               <h3>Create conjugation</h3>
               <span className="material-symbols-outlined">
                 arrow_forward_ios
