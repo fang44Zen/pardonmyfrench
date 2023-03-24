@@ -192,7 +192,7 @@ $border-style: solid 2px $main-color;
         color: white;
         background-color: #404258;
         border: solid 2px $main-color;
-        border-radius: 22px;
+        border-radius: 12px;
       }
     }
     @media only screen and (min-width: 768px) {
@@ -223,6 +223,7 @@ $border-style: solid 2px $main-color;
   }
 
   &_select-menu {
+    cursor: pointer;
     @media only screen and (max-width: 768px) {
       width: 22vh;
       margin-left: auto;

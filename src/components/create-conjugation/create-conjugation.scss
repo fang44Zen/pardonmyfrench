@@ -1,0 +1,185 @@
+$main-color: #ffb84c;
+$bg-color: #404258;
+$border-style: solid 2px $main-color;
+
+@mixin inputStyle($font-size, $padding) {
+  background-color: darken(white, 12%);
+  text-decoration: none;
+  border: solid 2px $main-color;
+  border-radius: 22px;
+  padding: $padding;
+  font-family: "Roboto";
+  font-size: $font-size;
+  &:focus {
+    outline: none !important;
+    color: black;
+  }
+}
+
+.add-new-verb {
+  margin-top: 25px;
+  input {
+    @include inputStyle(18px, 6px);
+    border-radius: 22px 0px 0px 22px;
+  }
+  button {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 6px;
+    font-family: "Roboto";
+    font-size: 18px;
+    color: white;
+    background-color: #404258;
+    border: solid 2px $main-color;
+    border-radius: 0px 22px 22px 0px;
+  }
+  @media only screen and (max-width: 320px) {
+    input {
+      @include inputStyle(18px, 2px);
+      border-radius: 22px 0px 0px 22px;
+    }
+    button {
+      font-size: 18px;
+      padding: 2px;
+    }
+  }
+  @media only screen and (max-width: 280px) {
+    display: flex;
+    flex-direction: column;
+    input {
+      @include inputStyle(18px, 2px);
+      margin: 1vh;
+    }
+    button {
+      border-radius: 12px;
+      margin-left: 40%;
+      margin-right: 40%;
+    }
+  }
+}
+
+.select-verb-menu {
+  cursor: pointer;
+  margin-top: 5px;
+  @media only screen and (max-width: 280px) {
+    width: 24vh;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 18px;
+  }
+  width: 26vh;
+  margin-left: auto;
+  margin-right: auto;
+  border: $border-style;
+  border-radius: 12px;
+  font-family: "Roboto";
+  color: white;
+  font-size: 22px;
+  &_current-verb {
+    &:hover {
+      background-color: lighten($bg-color, 10%);
+    }
+    border-radius: 12px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+  &_menu {
+    &_option {
+      margin: 8px 18px 8px 18px;
+      border-bottom: solid 1px darken(white, 35%);
+      padding: 6px;
+      &:hover,
+      &:active,
+      &:focus {
+        border-radius: 16px;
+        background-color: darken(white, 35%);
+      }
+    }
+  }
+}
+.isSelected {
+  border-bottom: 2px solid $main-color;
+  border-radius: 12px 12px 0 0;
+}
+.form-conj {
+  border: $border-style;
+  margin: 10px;
+  border-radius: 16px;
+  @media only screen and (min-width: 600px) {
+    width: 60vh;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  &_input-style {
+    display: grid;
+    grid-template-columns: 1.6fr 5fr;
+    gap: 5px;
+    font-size: 22px;
+    color: white;
+    margin: 8px;
+    label {
+      display: flex;
+    }
+    input {
+      @include inputStyle(18px, 6px);
+    }
+    @media only screen and (max-width: 400px) {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2px;
+      font-size: 22px;
+      label {
+        display: flex;
+        justify-content: center;
+      }
+      input {
+        @include inputStyle(18px, 2px);
+      }
+    }
+  }
+  &_button-bar {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 6px;
+    .subq-button {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px;
+      font-family: "Roboto";
+      font-size: 18px;
+      color: white;
+      background-color: #404258;
+      border: solid 4px $main-color;
+      border-radius: 25px;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      transition: box-shadow 0.3s ease-in-out;
+      &:active {
+        animation: pulse 0.3s ease-in-out;
+        box-shadow: rgba(0, 0, 0, 0.75) 0px 8px 20px;
+      }
+    }
+    .cancel-button {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px;
+      font-family: "Roboto";
+      font-size: 18px;
+      color: white;
+      border: solid 4px $main-color;
+      border-radius: 25px;
+      background-color: transparentize(#ea5455, 0.4);
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+  }
+}
