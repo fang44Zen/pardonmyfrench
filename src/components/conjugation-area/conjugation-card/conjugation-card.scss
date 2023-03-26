@@ -1,0 +1,95 @@
+$main-color: #ffb84c;
+$bg-color: #404258;
+
+@mixin buttonDefault($bg-color) {
+  font-family: "Roboto";
+  font-size: 1rem;
+  background-color: $bg-color;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  div {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  &:hover,
+  &:active {
+    background-color: lighten($color: $bg-color, $amount: 20);
+    color: black;
+  }
+}
+@mixin inputStyle($font-size, $padding) {
+  background-color: darken(white, 12%);
+  text-decoration: none;
+  border: solid 2px $main-color;
+  border-radius: 22px;
+  padding: $padding;
+  font-family: "Roboto";
+  font-size: $font-size;
+  &:focus {
+    outline: none !important;
+    color: black;
+  }
+}
+
+.conjugation-card {
+  display: flex;
+  justify-content: center;
+  &_card {
+    &_title {
+      display: flex;
+      color: white;
+      margin-left: 15px;
+    }
+    &_form {
+      border: solid 3px $main-color;
+      padding: 8px;
+      border-radius: 18px;
+      font-size: 22px;
+      color: white;
+      margin: 8px;
+      &_input {
+        margin: 5px;
+        display: grid;
+        grid-template-columns: 2.2fr 6fr 0.2fr;
+        gap: 12px;
+        label {
+          display: flex;
+        }
+        input {
+          @include inputStyle(18px, 6px);
+        }
+        button {
+          margin: auto;
+          color: white;
+          background-color: #3a98b9;
+          border: none;
+          border-radius: 10px;
+          font-size: 22px;
+          font-weight: bold;
+        }
+        @media only screen and (max-width: 420px) {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 2px;
+          font-size: 22px;
+          label {
+            display: flex;
+            justify-content: center;
+          }
+          input {
+            @include inputStyle(18px, 2px);
+          }
+          button {
+            margin: auto;
+          }
+        }
+      }
+      .check-button {
+        @include buttonDefault(#5d9c59);
+      }
+    }
+  }
+}

@@ -16,7 +16,7 @@ $bg-color: #404258;
   }
   &:hover,
   &:active {
-    background-color: lighten($color: $bg-color, $amount: 40);
+    background-color: lighten($color: $bg-color, $amount: 20);
     color: black;
   }
 }

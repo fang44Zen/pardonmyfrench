@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import LoadingPage from "./components/loading-page/loading-page";
 import ListQuestion from "./components/questions-area/list-questions";
 import CreateConjugation from "./components/create-conjugation/create-conjugation";
+import ConjugationList from "./components/conjugation-area/cojugation-list";
 
 const App = () => {
   const [isDataLoaded, setIsDataLoaded] = useState(false);
@@ -55,6 +56,10 @@ const App = () => {
             <Route
               path="/pardonmyfrench/exercices/list-questions"
               element={<ListQuestion />}
+            />
+            <Route
+              path="/pardonmyfrench/exercices/list-conjugaisons"
+              element={<ConjugationList />}
             />
             <Route
               exact
