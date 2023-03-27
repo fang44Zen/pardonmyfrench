@@ -6,12 +6,12 @@ const ConjugationCard = ({ answer }) => {
     <div className="conjugation-card">
       <div className="conjugation-card_card">
         <div className="conjugation-card_card_form">
-          <ConjInput pronoun="Je/j'" answer={answer} />
-          <ConjInput pronoun="Tu" answer={answer} />
-          <ConjInput pronoun="Il/Elle" answer={answer} />
-          <ConjInput pronoun="nous" answer={answer} />
-          <ConjInput pronoun="vous" answer={answer} />
-          <ConjInput pronoun="Ils/Elles" answer={answer} />
+          <ConjInput pronoun="Je/j'" answer={answer.je} />
+          <ConjInput pronoun="Tu" answer={answer.tu} />
+          <ConjInput pronoun="Il/Elle" answer={answer.il} />
+          <ConjInput pronoun="nous" answer={answer.nous} />
+          <ConjInput pronoun="vous" answer={answer.vous} />
+          <ConjInput pronoun="Ils/Elles" answer={answer.ils} />
 
           <div>
             <button className="check-button">Check</button>

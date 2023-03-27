@@ -13,12 +13,14 @@ const ConjugationBlock = ({ conjugations, tense, verb }) => {
       </div>
       {isShowConj && (
         <div>
-          {Object.keys(conjugations).map((pronoun, index) => (
-            <div key={index}>
-              <h3>{tense}</h3>
-              <ConjugationCard answer={conjugations[pronoun]} />
+          <h3>{tense}</h3>
+          {tense && (
+            <div>
+              {conjugations.map((conjugation, index) => (
+                <ConjugationCard key={index} answer={conjugation} />
+              ))}
             </div>
-          ))}
+          )}
         </div>
       )}
     </div>

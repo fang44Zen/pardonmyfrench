@@ -11,7 +11,7 @@ const ConjInput = ({ pronoun, answer }) => {
         <input />
         <button onClick={() => setShowAnswer(!showAnswer)}>?</button>
       </div>
-      {showAnswer && { answer }}
+      {showAnswer && <div>{answer[pronoun]}</div>}
     </div>
   );
 };
