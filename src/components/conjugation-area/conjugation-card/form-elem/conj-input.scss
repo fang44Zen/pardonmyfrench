@@ -3,13 +3,12 @@ $bg-color: #404258;
 
 @mixin buttonDefault($bg-color) {
   font-family: "Roboto";
-  font-size: 22px;
+  font-size: 1rem;
   background-color: $bg-color;
   border: none;
   border-radius: 8px;
   color: white;
   font-weight: bold;
-  padding: 3px;
   div {
     display: flex;
     align-items: center;
@@ -35,26 +34,41 @@ $bg-color: #404258;
   }
 }
 
-.conjugation-card {
-  display: flex;
-  justify-content: center;
-  &_card {
-    &_title {
+.conj-input {
+  margin: 5px;
+  display: grid;
+  grid-template-columns: 2.2fr 6fr 0.2fr;
+  gap: 12px;
+  align-items: center;
+  label {
+    display: flex;
+  }
+  input {
+    @include inputStyle(18px, 6px);
+  }
+  button {
+    margin: auto;
+    color: white;
+    background-color: #3a98b9;
+    border: none;
+    border-radius: 10px;
+    font-size: 22px;
+    font-weight: bold;
+  }
+  @media only screen and (max-width: 420px) {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2px;
+    font-size: 22px;
+    label {
       display: flex;
-      color: white;
-      margin-left: 15px;
+      justify-content: center;
     }
-    &_form {
-      border: solid 3px $main-color;
-      padding: 8px;
-      border-radius: 18px;
-      font-size: 22px;
-      color: white;
-      margin: 8px;
-      .check-button {
-        margin-top: 15px;
-        @include buttonDefault(#5d9c59);
-      }
+    input {
+      @include inputStyle(18px, 2px);
+    }
+    button {
+      margin: auto;
     }
   }
 }

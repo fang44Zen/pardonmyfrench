@@ -1,10 +1,43 @@
+import { doc, getDoc } from "firebase/firestore";
+import { useEffect, useState, useContext, useCallback } from "react";
+import { UserContext } from "../../context/UserContext";
+import { dataBase, auth } from "../../utils/firebase/firebase.utils";
 import ConjugationBlock from "./conjugation-block/conugation-block";
 
 const ConjugationList = () => {
+  const { currentUser } = useContext(UserContext);
+  const [conjuList, setConjList] = useState([]);
+
+  const updateConjugation = useCallback(async () => {
+    if (currentUser) {
+      try {
+        const docRef = doc(dataBase, "users", auth.currentUser.uid);
+        const docSnap = await getDoc(docRef);
+        setConjList(docSnap.data().conjugations);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  }, [currentUser]);
+
+  useEffect(() => {
+    updateConjugation();
+  }, [updateConjugation]);
+
   return (
     <div>
-      <h2>Verb to display</h2>
-      <ConjugationBlock />
+      {Object.keys(conjuList).map((verb, index) => (
+        <div key={index}>
+          {Object.keys(conjuList[verb]).map((tense, index) => (
+            <ConjugationBlock
+              key={index}
+              verb={verb}
+              tense={tense}
+              conjugations={conjuList[verb][tense]}
+            />
+          ))}
+        </div>
+      ))}
     </div>
   );
 };

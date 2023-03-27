@@ -3,7 +3,6 @@ import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState, useContext, useCallback } from "react";
 import { UserContext } from "../../context/UserContext";
 import { dataBase, auth } from "../../utils/firebase/firebase.utils";
-
 import QuestionBlock from "./questions-block/question-block";
 import { Link } from "react-router-dom";
 
