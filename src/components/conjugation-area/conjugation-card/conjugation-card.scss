@@ -39,11 +39,6 @@ $bg-color: #404258;
   display: flex;
   justify-content: center;
   &_card {
-    &_title {
-      display: flex;
-      color: white;
-      margin-left: 15px;
-    }
     &_form {
       border: solid 3px $main-color;
       padding: 8px;
