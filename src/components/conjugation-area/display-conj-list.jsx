@@ -10,9 +10,6 @@ const DisplayConjList = ({ conjuList }) => {
       conjugations: conjuList[verb][tense],
     }));
   });
-
-  console.log(verbs);
-
   return (
     <div>
       {Object.keys(verbs).map((verb, index) => (

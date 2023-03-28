@@ -1,0 +1,27 @@
+$main-color: #ffb84c;
+$bg-color: #404258;
+
+.conjugation-block {
+  margin: 12px;
+  border: #ffb84c solid 4px;
+  border-radius: 12px;
+  @media only screen and (min-width: 850px) {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  &_title {
+    padding: 12px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    border-bottom: #ffb84c solid 4px;
+  }
+  &_tense {
+    color: white;
+    font-size: 22px;
+    margin-top: 8px;
+  }
+}

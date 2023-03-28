@@ -1,71 +1,45 @@
-# Getting Started with Create React App
+# Pardon my French
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+### Pardon my French is a free and open source application that you can use for studying french, but there is tool that you can use for studying any kind of things. The app will be updated every week with new features and tools not only for helping to learn french but about productivity in general for exemple:
 
-In the project directory, you can run:
+- Create your own quizz
+- Create memo for french conjugation(maybe soon in other languages)
+- taking vocal note or using this to train your prononciation
+- Exercices pre-created by the app will be added and challenge
+- visualise your progress with your quizz and other results
+- todo list
+- list ressources
+  And alot more...
 
-### `npm start`
+## How to acces
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+So far unfortunately the app is not on my own domain but you can access here in this link:
+https://fang44zen.github.io/pardonmyfrench/
 
-### `npm test`
+You can create your account with google or you can create it with email and password. All your information are protected by google services, the back end architecture is based on Firebase. You will not receive anymail from the app.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## How to use it
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+For now there is not alot of tools, but here is a quick view. Once you created your account and you're connected, you can go to the "Create Exercises" page and select the one that you want.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Create Questions:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Instead of adding a thousand of questions and having a giant list with no order. Then you can create group of question and sort then into a theme.Let's say you are studying french and you just finished the course about clothes and accessories.
 
-### `npm run eject`
+<img src="src/img/screen/screen1.png" width="376" height="142">
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Click on "add" and now you can see "select group" has changed, and a form has appeared. Now you just have to follow your imagination:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<img src="https://file%2B.vscode-resource.vscode-cdn.net/home/fang44/Documents/Coding/pardon-my-french/src/img/screen/screen2.png?version%3D1679971329003" width="330" height="430"> <img src="src/img/screen/screen3.png" width="330" height="430"><img src="src/img/screen/screen4.png" width="330" height="430">
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+and then if you go to Exercices -> Questions
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<img src="src/img/screen/screen5.png" width="330" height="430">
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# pardon-my-french
+(Soon an input will be added then you can search all around your groups or questions)
