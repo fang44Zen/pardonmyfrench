@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 const ListQuestion = () => {
   const [questionList, setQuestionList] = useState([]);
   const { currentUser } = useContext(UserContext);
-  const [listQuestionIsEmpty, setListQuestionIsEmpty] = useState(false);
 
   const updateQuestionList = useCallback(async () => {
     if (currentUser) {
@@ -19,7 +18,7 @@ const ListQuestion = () => {
         setQuestionList(docSnap.data().questions);
       } catch (e) {
         console.log(e);
-        setListQuestionIsEmpty(true);
+        console.log("ouin ouin!");
       }
     }
   }, [currentUser]);

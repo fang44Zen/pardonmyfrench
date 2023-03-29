@@ -26,15 +26,22 @@ const QuestionBlock = ({ questionList, titleGroupe }) => {
           <div>
             {isVisibleQuestion && (
               <div>
-                {questionList[titleGroupe].map((elem, id) => (
-                  <div key={id}>
-                    <QuestionCard
-                      question={elem.question}
-                      answer={elem.answer}
-                      hint={elem.hint}
-                    />
+                {questionList[titleGroupe] &&
+                questionList[titleGroupe].length > 0 ? (
+                  questionList[titleGroupe].map((elem, id) => (
+                    <div key={id}>
+                      <QuestionCard
+                        question={elem.question}
+                        answer={elem.answer}
+                        hint={elem.hint}
+                      />
+                    </div>
+                  ))
+                ) : (
+                  <div>
+                    <h2 className="error-message">Your groupe is empty!!</h2>
                   </div>
-                ))}
+                )}
               </div>
             )}
           </div>

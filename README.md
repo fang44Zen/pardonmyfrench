@@ -36,7 +36,7 @@ Instead of adding a thousand of questions and having a giant list with no order.
 
 Click on "add" and now you can see "select group" has changed, and a form has appeared. Now you just have to follow your imagination:
 
-<img src="https://file%2B.vscode-resource.vscode-cdn.net/home/fang44/Documents/Coding/pardon-my-french/src/img/screen/screen2.png?version%3D1679971329003" width="330" height="430"> <img src="src/img/screen/screen3.png" width="330" height="430"><img src="src/img/screen/screen4.png" width="330" height="430">
+<img src="src/img/screen/screen2.png" width="330" height="430"> <img src="src/img/screen/screen3.png" width="330" height="430"><img src="src/img/screen/screen4.png" width="330" height="430">
 
 and then if you go to Exercices -> Questions
 

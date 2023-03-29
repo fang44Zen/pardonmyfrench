@@ -31,6 +31,9 @@ const CreateConjugation = () => {
   const [showVerbMenu, setShowVerbMenu] = useState(false);
   const [showTimeMenu, setShowTimeMenu] = useState(false);
   const [inputConj, setInputConj] = useState(defaultInputConj);
+  const [addVerbInputEmpty, setAddVerbInputEmpty] = useState(false);
+  const [inputConjEmpty, setInputConjEmpty] = useState(false);
+  const [addButtonShake, setAddButtonShake] = useState(false);
   const { je, tu, il, nous, vous, ils } = inputConj;
   const [timeAlreadyExist, setTimeAlreadyExist] = useState("");
   const [valueCurrentTime, setValueCurrenTime] = useState("");
@@ -106,6 +109,7 @@ const CreateConjugation = () => {
       updateVerbList();
     } catch (e) {
       console.log(e);
+      addVerbIsEmpty();
     }
   };
 
@@ -125,7 +129,23 @@ const CreateConjugation = () => {
       setInputConj(defaultInputConj);
       setCurrentTime("");
       updateVerbList();
+    } else {
+      setInputConjEmpty(true);
+      setTimeout(() => {
+        setInputConjEmpty(false);
+      }, 3000);
     }
+  };
+
+  const addVerbIsEmpty = () => {
+    setAddVerbInputEmpty(true);
+    setAddButtonShake(true);
+    setTimeout(() => {
+      setAddButtonShake(false);
+    }, 2000);
+    setTimeout(() => {
+      setAddVerbInputEmpty(false);
+    }, 3000);
   };
 
   return (
@@ -137,8 +157,17 @@ const CreateConjugation = () => {
             onChange={verbInputHandler}
             placeholder="Add a verb"
           />
-          <button onClick={addVerb}>add</button>
+          <button
+            onClick={addVerb}
+            className={addButtonShake ? "shake-button" : null}
+          >
+            add
+          </button>
         </div>
+        {addVerbInputEmpty && (
+          <p className="error-message">You can't add empty verb</p>
+        )}
+
         <div className="select-verb-menu">
           <div
             className={
@@ -281,6 +310,11 @@ const CreateConjugation = () => {
               placeholder="Ils/Elles"
             />
           </div>
+          {inputConjEmpty && (
+            <p className="error-message shake-button">
+              One or some inputs are empty!
+            </p>
+          )}
 
           <div className="form-conj_button-bar">
             <button className="subq-button" onClick={addConjugation}>

@@ -65,7 +65,7 @@ $bg-color: #404258;
         width: fit-content;
         margin-left: auto;
         margin-right: auto;
-        padding: 3px;
+        padding: 5px 15px 5px 15px;
         border: 1px solid #3a98b9;
         border-radius: 8px;
         color: white;
@@ -74,11 +74,17 @@ $bg-color: #404258;
         width: fit-content;
         margin-left: auto;
         margin-right: auto;
-        padding: 3px;
+        padding: 5px 15px 5px 15px;
         border: 1px solid #ff6464;
         border-radius: 8px;
         color: white;
       }
+    }
+    .good-answer {
+      color: #5d9c59;
+    }
+    .wrong-answer {
+      color: #ff6464;
     }
     &_input {
       display: grid;

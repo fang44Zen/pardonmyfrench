@@ -7,6 +7,28 @@ import { useState } from "react";
 const QuestionCard = ({ question, answer, hint }) => {
   const [showHint, setShowHint] = useState(false);
   const [showAnswer, setShowAnswer] = useState(false);
+  const [answerInput, setAnswerInput] = useState("");
+  const [goodAnswer, setGoodAnswer] = useState(false);
+  const [wrongAnswer, setWrongAnswer] = useState(false);
+
+  const inputHandler = (event) => {
+    const text = event.target.value;
+    setAnswerInput(text);
+  };
+
+  const answersHandler = () => {
+    if (answerInput === answer) {
+      setGoodAnswer(true);
+      setTimeout(() => {
+        setGoodAnswer(false);
+      }, 4000);
+    } else {
+      setWrongAnswer(true);
+      setTimeout(() => {
+        setWrongAnswer(false);
+      }, 4000);
+    }
+  };
 
   const hintHandler = () => {
     setShowHint(!showHint);
@@ -29,7 +51,7 @@ const QuestionCard = ({ question, answer, hint }) => {
           <h3 className="question-card_card_question">{question}</h3>
         </div>
         <div className="question-card_card_input">
-          <input placeholder="Answer" />
+          <input onChange={inputHandler} placeholder="Answer" />
         </div>
         <div className="question-card_card_button">
           {hint === "" ? (
@@ -57,13 +79,24 @@ const QuestionCard = ({ question, answer, hint }) => {
               Show answer <TfiFaceSad />
             </div>
           </button>
-          <button className="question-card_card_button_check">
+          <button
+            onClick={answersHandler}
+            className="question-card_card_button_check"
+          >
             <div>
               Check
               <AiOutlineCheckSquare />
             </div>
           </button>
         </div>
+        {goodAnswer && (
+          <h4 className="good-answer animate__animated animate__pulse animate__infinite">
+            Good answer!
+          </h4>
+        )}
+        {wrongAnswer && (
+          <h4 className="wrong-answer shake-button">Wrong answer!</h4>
+        )}
         <div className="question-card_card_hidden">
           <div
             className={

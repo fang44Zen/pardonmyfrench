@@ -26,12 +26,9 @@ const ConjugationBlock = ({ verb, tenses }) => {
       {isShowConj && (
         <div>
           {tenses.map((conjugation, index) => (
-            <div>
+            <div key={index}>
               <h3 className="conjugation-block_tense">{conjugation.tense}:</h3>
-              <ConjugationCard
-                key={index}
-                answer={conjugation.conjugations[0]}
-              />
+              <ConjugationCard answer={conjugation.conjugations[0]} />
             </div>
           ))}
         </div>
