@@ -1,20 +1,18 @@
 import { useState } from "react";
 import "./conj-input.scss";
 
-const ConjInput = ({ pronoun, answer }) => {
+const ConjInput = ({ pronoun, answer, onInputChange, inputId }) => {
   const [showAnswer, setShowAnswer] = useState(false);
-  const [inputValue, setInputValue] = useState("");
 
-  const inputHandler = (event) => {
-    const text = event.target.value;
-    setInputValue(text);
+  const handleInputChange = (event) => {
+    onInputChange(inputId, event.target.value);
   };
 
   return (
     <div>
       <div className="conj-input">
         <label>{pronoun}</label>
-        <input onChange={inputHandler} value={inputValue} />
+        <input onChange={handleInputChange} />
         <button onClick={() => setShowAnswer(!showAnswer)}>?</button>
       </div>
       {showAnswer && <div>{answer}</div>}
