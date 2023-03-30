@@ -38,6 +38,12 @@ $bg-color: #404258;
 .conjugation-card {
   display: flex;
   justify-content: center;
+  .wrong-answer {
+    color: #ff6464;
+  }
+  .good-answer {
+    color: #5d9c59;
+  }
   &_card {
     &_form {
       border: solid 3px $main-color;

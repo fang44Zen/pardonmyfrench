@@ -29,7 +29,10 @@ const ConjugationCard = ({ answer }) => {
       }
     });
     setResults(newResults);
-    setShowAnser(true);
+    setShowAnser(false);
+    setTimeout(() => {
+      setShowAnser(true);
+    }, 300);
   };
 
   return (
@@ -44,9 +47,9 @@ const ConjugationCard = ({ answer }) => {
           />
           {showAnswer ? (
             results[0] === "correct" ? (
-              <p>Correct answer !</p>
+              <p className="good-answer">Correct answer !</p>
             ) : (
-              <p>Wrong answer !</p>
+              <p className="wrong-answer">Wrong answer !</p>
             )
           ) : null}
           <ConjInput
@@ -59,7 +62,7 @@ const ConjugationCard = ({ answer }) => {
             results[1] === "correct" ? (
               <p>Correct answer !</p>
             ) : (
-              <p>Wrong answer !</p>
+              <p className="wrong-answer">Wrong answer !</p>
             )
           ) : null}
           <ConjInput
@@ -72,7 +75,7 @@ const ConjugationCard = ({ answer }) => {
             results[2] === "correct" ? (
               <p>Correct answer !</p>
             ) : (
-              <p>Wrong answer !</p>
+              <p className="wrong-answer">Wrong answer !</p>
             )
           ) : null}
           <ConjInput
@@ -85,7 +88,7 @@ const ConjugationCard = ({ answer }) => {
             results[3] === "correct" ? (
               <p>Correct answer !</p>
             ) : (
-              <p>Wrong answer !</p>
+              <p className="wrong-answer">Wrong answer !</p>
             )
           ) : null}
           <ConjInput
@@ -98,7 +101,7 @@ const ConjugationCard = ({ answer }) => {
             results[4] === "correct" ? (
               <p>Correct answer !</p>
             ) : (
-              <p>Wrong answer !</p>
+              <p className="wrong-answer">Wrong answer !</p>
             )
           ) : null}
           <ConjInput
@@ -111,7 +114,7 @@ const ConjugationCard = ({ answer }) => {
             results[5] === "correct" ? (
               <p>Correct answer !</p>
             ) : (
-              <p>Wrong answer !</p>
+              <p className="wrong-answer">Wrong answer !</p>
             )
           ) : null}
 
