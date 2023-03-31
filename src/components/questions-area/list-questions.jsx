@@ -3,12 +3,19 @@ import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState, useContext, useCallback } from "react";
 import { UserContext } from "../../context/UserContext";
 import { dataBase, auth } from "../../utils/firebase/firebase.utils";
+import { HiOutlineSearchCircle } from "react-icons/hi";
 import QuestionBlock from "./questions-block/question-block";
 import { Link } from "react-router-dom";
 
 const ListQuestion = () => {
   const [questionList, setQuestionList] = useState([]);
   const { currentUser } = useContext(UserContext);
+  const [inputSearchValue, setInputSearhValue] = useState("");
+
+  const inputSearchHandler = (event) => {
+    const text = event.target.value;
+    setInputSearhValue(text);
+  };
 
   const updateQuestionList = useCallback(async () => {
     if (currentUser) {
@@ -33,14 +40,27 @@ const ListQuestion = () => {
         <div>
           {questionList.length !== 0 ? (
             <div>
-              {Object.keys(questionList).map((titleGroupe, id) => (
-                <div key={id}>
-                  <QuestionBlock
-                    titleGroupe={titleGroupe}
-                    questionList={questionList}
-                  />
+              <div className="question-search-bar">
+                <input
+                  placeholder="Search group"
+                  onChange={inputSearchHandler}
+                  value={inputSearchValue}
+                />
+                <div className="question-search-bar_search-icon">
+                  <HiOutlineSearchCircle />
                 </div>
-              ))}
+              </div>
+
+              {Object.keys(questionList)
+                .filter((titleGroupe) => titleGroupe.includes(inputSearchValue))
+                .map((titleGroupeFiltered, id) => (
+                  <div key={id}>
+                    <QuestionBlock
+                      titleGroupe={titleGroupeFiltered}
+                      questionList={questionList}
+                    />
+                  </div>
+                ))}
             </div>
           ) : (
             <div className="list-empty-block">
